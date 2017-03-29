@@ -1,9 +1,6 @@
-package com.ivotai.trick.ui;
+package com.ivotai.trick;
 
 import android.widget.TextView;
-
-import com.ivotai.trick.ButterKnifeActivity;
-import com.ivotai.trick.R;
 
 import butterknife.BindView;
 
@@ -12,11 +9,11 @@ public abstract class ToolbarActivity extends ButterKnifeActivity {
     @BindView(R.id.tvToolbarTitle)
     TextView tvToolbarTitle;
 
-    protected abstract  String getToolbarTitle();
+    protected abstract  String toolbarTitle();
 
     @Override
     protected  void init() {
-        String toolbarTitle = getToolbarTitle();
+        String toolbarTitle = toolbarTitle();
         if (toolbarTitle != null) {
             tvToolbarTitle.setText(toolbarTitle);
         }

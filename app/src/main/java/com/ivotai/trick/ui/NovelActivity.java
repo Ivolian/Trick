@@ -6,9 +6,14 @@ import android.widget.LinearLayout;
 import com.hitomi.cslibrary.CrazyShadow;
 import com.hitomi.cslibrary.base.CrazyShadowDirection;
 import com.ivotai.trick.R;
+import com.ivotai.trick.ToolbarActivity;
+import com.ivotai.trick.util.DensityUtil;
 
 import butterknife.BindView;
 
+/**
+ * The type Novel activity.
+ */
 public class NovelActivity extends ToolbarActivity {
 
     @Override
@@ -17,7 +22,7 @@ public class NovelActivity extends ToolbarActivity {
     }
 
     @Override
-    protected final String getToolbarTitle() {
+    protected final String toolbarTitle() {
         return "玄幻";
     }
 
@@ -27,27 +32,24 @@ public class NovelActivity extends ToolbarActivity {
         initOperationBar();
     }
 
+    /**
+     * The Ll operation bar.
+     */
     @BindView(R.id.llOperationBar)
     LinearLayout llOperationBar;
 
     private void initOperationBar() {
-        addShadowForOperationBar();
+        addOperationBarShadow();
     }
 
-    private void addShadowForOperationBar() {
+    private void addOperationBarShadow() {
         new CrazyShadow.Builder()
                 .setContext(this)
                 .setDirection(CrazyShadowDirection.BOTTOM)
-                .setShadowRadius(dip2Px(5))
+                .setShadowRadius(DensityUtil.dip2Px(this, 5))
                 .setBaseShadowColor(ContextCompat.getColor(this, R.color.md_grey_200))
                 .setImpl(CrazyShadow.IMPL_FLOAT)
                 .action(llOperationBar);
-    }
-
-
-    public final int dip2Px(float dpValue) {
-        final float scale = getResources().getDisplayMetrics().density;
-        return (int) (dpValue * scale + 0.5f);
     }
 
 
