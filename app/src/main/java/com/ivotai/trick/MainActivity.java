@@ -1,55 +1,49 @@
 package com.ivotai.trick;
 
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 
-import com.ivotai.trick.config.GlobalSettings;
-import com.ivotai.trick.data.sqlite.DaoSessionProvider;
-import com.ivotai.trick.data.model.Train;
-import com.ivotai.trick.data.network.RetrofitProvider;
-import com.ivotai.trick.data.network.TrainService;
+import com.ivotai.trick.ui.NovelActivity;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends ButterKnifeActivity {
 
     @Override
-    protected final void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected final int layoutResID() {
+        return R.layout.act_main;
+    }
 
-
-        listNews();
+    @OnClick(R2.id.readNovel)
+    public final void readNovel() {
+        Intent intent = new Intent(this, NovelActivity.class);
+        startActivity(intent);
     }
 
 
-    private void listNews() {
-        RetrofitProvider retrofitProvider = TrickApplication.getRetrofitProvider();
-        TrainService service = retrofitProvider.provide().create(TrainService.class);
-        final String name = "G4";
-        Call<Train> call = service.getTrain(GlobalSettings.appKey(), name);
-        call.enqueue(new Callback<Train>() {
-            @Override
-            public void onResponse(Call<Train> call, @NonNull Response<Train> response) {
-                Train train = response.body();
-                copeTrain(train);
-            }
-
-            @Override
-            public void onFailure(Call<Train> call, Throwable t) {
-
-            }
-        });
-    }
-
-
-    private void copeTrain(@NonNull Train train) {
-        DaoSessionProvider daoSessionProvider = TrickApplication.getDaoSessionProvider();
-        daoSessionProvider.provide().getStationDao().insertInTx(train.getResult().getStation_list());
-    }
+//
+//    private void listNews() {
+//        RetrofitProvider retrofitProvider = TrickApplication.getRetrofitProvider();
+//        TrainService service = retrofitProvider.provide().create(TrainService.class);
+//        final String name = "G4";
+//        Call<Train> call = service.getTrain(GlobalSettings.appKey(), name);
+//        call.enqueue(new Callback<Train>() {
+//            @Override
+//            public void onResponse(Call<Train> call, @NonNull Response<Train> response) {
+//                Train train = response.body();
+//                copeTrain(train);
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Train> call, Throwable t) {
+//
+//            }
+//        });
+//    }
+//
+//
+//    private void copeTrain(@NonNull Train train) {
+////        DaoSessionProvider daoSessionProvider = TrickApplication.getDaoSessionProvider();
+////        daoSessionProvider.provide().getStationDao().insertInTx(train.getResult().getStation_list());
+//    }
 
 }

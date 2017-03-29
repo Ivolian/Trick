@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion 25
@@ -40,4 +41,13 @@ dependencies {
     debugCompile 'com.facebook.stetho:stetho-okhttp3:1.4.2'
     // leakcanary
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    // butterknife
+    compile 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    compile 'com.wada811:android-material-design-colors:3.0.0'
+
+    compile 'com.github.Hitomis:CrazyShadow:v1.0.1'
+
+    compile "com.mikepenz:iconics-core:2.8.2@aar"
+    compile 'com.mikepenz:ionicons-typeface:2.0.1.2@aar'
 }

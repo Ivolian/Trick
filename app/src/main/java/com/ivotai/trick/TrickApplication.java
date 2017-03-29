@@ -4,9 +4,8 @@ import android.app.Application;
 
 import com.facebook.stetho.Stetho;
 import com.ivotai.trick.config.GlobalSettings;
-import com.ivotai.trick.data.sqlite.DaoSessionProvider;
 import com.ivotai.trick.data.network.RetrofitProvider;
-import com.squareup.leakcanary.LeakCanary;
+import com.ivotai.trick.data.sqlite.DaoSessionProvider;
 
 public class TrickApplication extends Application {
 
@@ -20,7 +19,7 @@ public class TrickApplication extends Application {
     }
 
     private void init() {
-        LeakCanary.install(this);
+//        LeakCanary.install(this);
         // 无必要的先后顺序
         initDaoSessionProvider();
         initStetho();

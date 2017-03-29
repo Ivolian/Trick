@@ -12,6 +12,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public final class RetrofitProvider extends Provider<Retrofit> {
 
+// http://android.reader.qq.com/v6_3_9/listDispatch?action=categoryV3&actionTag=,-1,-1,-1,-1,6&actionId=20001&pagestamp=1
+//    http://android.reader.qq.com/v6_3_9/listDispatch?action=categoryV3&actionTag=,-1,-1,-1,-1,6&actionId=20001&pagestamp=1
 
     private static final String BASE_URL = "http://apis.juhe.cn/train/";
 
