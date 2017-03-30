@@ -4,8 +4,8 @@ import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.ivotai.trick.Provider;
-import com.ivotai.trick.data.model.DaoMaster;
-import com.ivotai.trick.data.model.DaoSession;
+import com.ivotai.trick.model.DaoMaster;
+import com.ivotai.trick.model.DaoSession;
 
 public final class DaoSessionProvider extends Provider<DaoSession> {
 

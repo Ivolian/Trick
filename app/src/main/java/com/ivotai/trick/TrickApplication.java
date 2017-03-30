@@ -4,7 +4,7 @@ import android.app.Application;
 
 import com.facebook.stetho.Stetho;
 import com.ivotai.trick.config.GlobalSettings;
-import com.ivotai.trick.data.network.RetrofitProvider;
+import com.ivotai.trick.network.RetrofitProvider;
 import com.ivotai.trick.data.sqlite.DaoSessionProvider;
 
 public class TrickApplication extends Application {

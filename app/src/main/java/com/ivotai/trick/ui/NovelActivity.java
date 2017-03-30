@@ -7,9 +7,12 @@ import com.hitomi.cslibrary.CrazyShadow;
 import com.hitomi.cslibrary.base.CrazyShadowDirection;
 import com.ivotai.trick.R;
 import com.ivotai.trick.ToolbarActivity;
+import com.ivotai.trick.TrickApplication;
+import com.ivotai.trick.network.BookServiceWrapper;
 import com.ivotai.trick.util.DensityUtil;
 
 import butterknife.BindView;
+import retrofit2.Retrofit;
 
 /**
  * The type Novel activity.
@@ -30,6 +33,7 @@ public class NovelActivity extends ToolbarActivity {
     protected final void init() {
         super.init();
         initOperationBar();
+        getBooks();
     }
 
     /**
@@ -51,6 +55,14 @@ public class NovelActivity extends ToolbarActivity {
                 .setImpl(CrazyShadow.IMPL_FLOAT)
                 .action(llOperationBar);
     }
+
+
+    private void getBooks(){
+        Retrofit retrofit = TrickApplication.getRetrofitProvider().provide();
+        BookServiceWrapper bookServiceWrapper = new BookServiceWrapper(retrofit);
+
+    }
+
 
 
 }

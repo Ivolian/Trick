@@ -1,13 +1,13 @@
 package com.ivotai.trick;
 
-import com.ivotai.trick.config.GlobalSettings;
-import com.ivotai.trick.data.model.Train;
-import com.ivotai.trick.data.network.RetrofitProvider;
-import com.ivotai.trick.data.network.TrainService;
+import com.ivotai.trick.model.BookResponse;
+import com.ivotai.trick.network.BookServiceWrapper;
+import com.ivotai.trick.network.RetrofitProvider;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import retrofit2.Call;
 import retrofit2.Retrofit;
 
 import static org.junit.Assert.assertEquals;
@@ -27,14 +27,11 @@ public class NetworkTest {
     @Test
     public void getTrain() throws Exception {
 
-        TrainService trainService = retrofit.create(TrainService.class);
-        final String name = "G4";
-        Train train = trainService
-                .getTrain(GlobalSettings.appKey(), name)
-                .execute()
-                .body();
 
-        assertEquals(train.getResult().getStation_list().size(), 3);
+        BookServiceWrapper bookServiceWrapper = new BookServiceWrapper(retrofit);
+        Call<BookResponse> call = bookServiceWrapper.listByPagestamp(1);
+        BookResponse bookResponse = call.execute().body();
+        assertEquals(3, 3);
 
     }
 

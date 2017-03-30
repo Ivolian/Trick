@@ -1,4 +1,4 @@
-package com.ivotai.trick.data.network;
+package com.ivotai.trick.network;
 
 import android.app.Application;
 
@@ -15,7 +15,7 @@ public final class RetrofitProvider extends Provider<Retrofit> {
 // http://android.reader.qq.com/v6_3_9/listDispatch?action=categoryV3&actionTag=,-1,-1,-1,-1,6&actionId=20001&pagestamp=1
 //    http://android.reader.qq.com/v6_3_9/listDispatch?action=categoryV3&actionTag=,-1,-1,-1,-1,6&actionId=20001&pagestamp=1
 
-    private static final String BASE_URL = "http://apis.juhe.cn/train/";
+    private static final String BASE_URL = "http://android.reader.qq.com/v6_3_9/";
 
     @Override
     public void init(Application application) {
