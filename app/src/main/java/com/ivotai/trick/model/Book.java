@@ -40,7 +40,7 @@ public class Book {
     private int discountChecked;
     private String discountPrice;
     private int exquisite;
-    private ExtBean ext;
+    private Ext ext;
     private int finished;
     private int from;
     private String intro;
@@ -50,7 +50,6 @@ public class Book {
     private int price;
     private int recTime;
     private String showPrice;
-    private StatParamsBean stat_params;
     private String title;
     private int totalWords;
     private int unitprice;
@@ -136,11 +135,11 @@ public class Book {
         this.exquisite = exquisite;
     }
 
-    public ExtBean getExt() {
+    public Ext getExt() {
         return ext;
     }
 
-    public void setExt(ExtBean ext) {
+    public void setExt(Ext ext) {
         this.ext = ext;
     }
 
@@ -216,14 +215,6 @@ public class Book {
         this.showPrice = showPrice;
     }
 
-    public StatParamsBean getStat_params() {
-        return stat_params;
-    }
-
-    public void setStat_params(StatParamsBean stat_params) {
-        this.stat_params = stat_params;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -256,96 +247,7 @@ public class Book {
         this.updateTime = updateTime;
     }
 
-    public static class ExtBean {
-        /**
-         * unit : 人气
-         * recTitle : 小编力荐
-         * limitPrice :
-         * discount :
-         * rent :
-         */
 
-        private String unit;
-        private String recTitle;
-        private String limitPrice;
-        private String discount;
-        private String rent;
 
-        public String getUnit() {
-            return unit;
-        }
-
-        public void setUnit(String unit) {
-            this.unit = unit;
-        }
-
-        public String getRecTitle() {
-            return recTitle;
-        }
-
-        public void setRecTitle(String recTitle) {
-            this.recTitle = recTitle;
-        }
-
-        public String getLimitPrice() {
-            return limitPrice;
-        }
-
-        public void setLimitPrice(String limitPrice) {
-            this.limitPrice = limitPrice;
-        }
-
-        public String getDiscount() {
-            return discount;
-        }
-
-        public void setDiscount(String discount) {
-            this.discount = discount;
-        }
-
-        public String getRent() {
-            return rent;
-        }
-
-        public void setRent(String rent) {
-            this.rent = rent;
-        }
-    }
-
-    public static class StatParamsBean {
-        /**
-         * origin : 908
-         * data_type : 0
-         * alg : 0
-         */
-
-        private String origin;
-        private int data_type;
-        private String alg;
-
-        public String getOrigin() {
-            return origin;
-        }
-
-        public void setOrigin(String origin) {
-            this.origin = origin;
-        }
-
-        public int getData_type() {
-            return data_type;
-        }
-
-        public void setData_type(int data_type) {
-            this.data_type = data_type;
-        }
-
-        public String getAlg() {
-            return alg;
-        }
-
-        public void setAlg(String alg) {
-            this.alg = alg;
-        }
-    }
 
 }

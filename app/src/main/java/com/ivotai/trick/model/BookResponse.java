@@ -2,7 +2,7 @@ package com.ivotai.trick.model;
 
 import java.util.List;
 
-public class BookResponse extends BaseResponse<Book> {
+public class BookResponse {
 
     private List<Book> bookList;
 

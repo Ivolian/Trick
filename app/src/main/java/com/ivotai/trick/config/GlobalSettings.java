@@ -1,16 +1,33 @@
 package com.ivotai.trick.config;
 
+/**
+ * The type Global settings.
+ */
 public final class GlobalSettings {
 
     private GlobalSettings() {
     }
 
-    public static String appKey() {
-        return "8ee5e4bd60a9dc5e2304eef366488bb9";
+    private static final String BASE_URL = "http://android.reader.qq.com/v6_3_9/";
+
+    private static final Boolean USE_STETHO = true;
+
+    /**
+     * Use stetho boolean.
+     *
+     * @return the boolean
+     */
+    public static Boolean useStetho() {
+        return USE_STETHO;
     }
 
-    public static Boolean useStetho() {
-        return true;
+    /**
+     * Base url string.
+     *
+     * @return the string
+     */
+    public static String baseUrl() {
+        return BASE_URL;
     }
 
 }

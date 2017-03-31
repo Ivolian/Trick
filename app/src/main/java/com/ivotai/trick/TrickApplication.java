@@ -4,53 +4,29 @@ import android.app.Application;
 
 import com.facebook.stetho.Stetho;
 import com.ivotai.trick.config.GlobalSettings;
-import com.ivotai.trick.network.RetrofitProvider;
-import com.ivotai.trick.data.sqlite.DaoSessionProvider;
+import com.ivotai.trick.dragger2.AppComponentWrapper;
 
+/**
+ * The type Trick application.
+ */
 public class TrickApplication extends Application {
-
-    private static TrickApplication instance;
 
     @Override
     public final void onCreate() {
         super.onCreate();
-        instance = this;
         init();
     }
 
     private void init() {
+        AppComponentWrapper.init(this);
 //        LeakCanary.install(this);
-        // 无必要的先后顺序
-        initDaoSessionProvider();
         initStetho();
-        initRetrofit();
-    }
-
-    private DaoSessionProvider daoSessionProvider;
-
-    private void initDaoSessionProvider() {
-        daoSessionProvider = new DaoSessionProvider();
-        daoSessionProvider.init(instance);
-    }
-
-    public static DaoSessionProvider getDaoSessionProvider() {
-        return instance.daoSessionProvider;
-    }
-
-    public static RetrofitProvider getRetrofitProvider() {
-        return instance.retrofitProvider;
     }
 
     private void initStetho() {
         if (GlobalSettings.useStetho()) {
-            Stetho.initializeWithDefaults(instance);
+            Stetho.initializeWithDefaults(this);
         }
     }
 
-    private RetrofitProvider retrofitProvider;
-
-    private void initRetrofit() {
-        retrofitProvider = new RetrofitProvider();
-        retrofitProvider.init(instance);
-    }
 }

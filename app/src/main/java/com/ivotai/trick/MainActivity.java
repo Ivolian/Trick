@@ -2,48 +2,34 @@ package com.ivotai.trick;
 
 import android.content.Intent;
 
+import com.ivotai.trick.base.ToolbarActivity;
 import com.ivotai.trick.ui.NovelActivity;
 
 import butterknife.OnClick;
 
-public class MainActivity extends ButterKnifeActivity {
+/**
+ * The type Main activity.
+ */
+public class MainActivity extends ToolbarActivity {
 
     @Override
     protected final int layoutResID() {
         return R.layout.act_main;
     }
 
-    @OnClick(R2.id.readNovel)
+    @Override
+    protected String toolbarTitle() {
+        return "主界面";
+    }
+
+    /**
+     * Read novel.
+     */
+    @OnClick(R2.id.tvReadNovel)
     public final void readNovel() {
+//  TODO Rx 压力
         Intent intent = new Intent(this, NovelActivity.class);
         startActivity(intent);
     }
-
-
-//
-//    private void listNews() {
-//        RetrofitProvider retrofitProvider = TrickApplication.getRetrofitProvider();
-//        TrainService service = retrofitProvider.provide().create(TrainService.class);
-//        final String name = "G4";
-//        Call<Train> call = service.getTrain(GlobalSettings.appKey(), name);
-//        call.enqueue(new Callback<Train>() {
-//            @Override
-//            public void onResponse(Call<Train> call, @NonNull Response<Train> response) {
-//                Train train = response.body();
-//                copeTrain(train);
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Train> call, Throwable t) {
-//
-//            }
-//        });
-//    }
-//
-//
-//    private void copeTrain(@NonNull Train train) {
-////        DaoSessionProvider daoSessionProvider = TrickApplication.getDaoSessionProvider();
-////        daoSessionProvider.provide().getStationDao().insertInTx(train.getResult().getStation_list());
-//    }
 
 }

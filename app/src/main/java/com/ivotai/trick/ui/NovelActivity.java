@@ -6,13 +6,14 @@ import android.widget.LinearLayout;
 import com.hitomi.cslibrary.CrazyShadow;
 import com.hitomi.cslibrary.base.CrazyShadowDirection;
 import com.ivotai.trick.R;
-import com.ivotai.trick.ToolbarActivity;
-import com.ivotai.trick.TrickApplication;
-import com.ivotai.trick.network.BookServiceWrapper;
+import com.ivotai.trick.base.ToolbarActivity;
+import com.ivotai.trick.dragger2.AppComponentWrapper;
+import com.ivotai.trick.network.fetcher.BookFetcher;
 import com.ivotai.trick.util.DensityUtil;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
-import retrofit2.Retrofit;
 
 /**
  * The type Novel activity.
@@ -30,10 +31,14 @@ public class NovelActivity extends ToolbarActivity {
     }
 
     @Override
-    protected final void init() {
-        super.init();
-        initOperationBar();
-        getBooks();
+    protected void injectDependency() {
+        AppComponentWrapper.getInjector().inject(this);
+    }
+
+    @Override
+    protected void initViews() {
+        super.initViews();
+        addShadowForOperationBar();
     }
 
     /**
@@ -42,11 +47,7 @@ public class NovelActivity extends ToolbarActivity {
     @BindView(R.id.llOperationBar)
     LinearLayout llOperationBar;
 
-    private void initOperationBar() {
-        addOperationBarShadow();
-    }
-
-    private void addOperationBarShadow() {
+    private void addShadowForOperationBar() {
         new CrazyShadow.Builder()
                 .setContext(this)
                 .setDirection(CrazyShadowDirection.BOTTOM)
@@ -56,13 +57,21 @@ public class NovelActivity extends ToolbarActivity {
                 .action(llOperationBar);
     }
 
+    @Inject
+    protected BookFetcher bookFetcher;
 
-    private void getBooks(){
-        Retrofit retrofit = TrickApplication.getRetrofitProvider().provide();
-        BookServiceWrapper bookServiceWrapper = new BookServiceWrapper(retrofit);
-
+    @Override
+    protected void initWorks() {
+        fetchBook();
     }
 
+    private void fetchBook() {
+        try {
+            bookFetcher.fetch(1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }
