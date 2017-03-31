@@ -4,7 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/toolbar" />
+    <ImageView
+        android:scaleType="fitXY"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/common_header_bg" />
 
     <TextView
         android:id="@+id/tvReadNovel"

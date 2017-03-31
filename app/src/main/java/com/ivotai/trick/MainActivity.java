@@ -2,7 +2,7 @@ package com.ivotai.trick;
 
 import android.content.Intent;
 
-import com.ivotai.trick.base.ToolbarActivity;
+import com.ivotai.trick.base.BaseActivity;
 import com.ivotai.trick.ui.NovelActivity;
 
 import butterknife.OnClick;
@@ -10,7 +10,7 @@ import butterknife.OnClick;
 /**
  * The type Main activity.
  */
-public class MainActivity extends ToolbarActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected final int layoutResID() {
@@ -18,8 +18,8 @@ public class MainActivity extends ToolbarActivity {
     }
 
     @Override
-    protected String toolbarTitle() {
-        return "主界面";
+    protected boolean hideStatusBar() {
+        return true;
     }
 
     /**

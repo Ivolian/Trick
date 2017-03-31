@@ -1,24 +1,24 @@
 package com.ivotai.trick.dragger2;
 
-import com.ivotai.trick.TrickApplication;
+import android.app.Application;
 
 import dagger.internal.Preconditions;
 
 /**
- * The type App component wrapper.
+ * The type App component holder.
  */
-public class AppComponentWrapper {
+public class AppComponentHolder {
 
     private static AppComponent appComponent;
 
     /**
-     * Init.
+     * Init app component.
      *
-     * @param trickApplication the trick application
+     * @param application the application
      */
-    public static void init(TrickApplication trickApplication) {
+    public static void initAppComponent(Application application) {
         appComponent = DaggerAppComponent.builder()
-                .appModule(new AppModule(trickApplication))
+                .appModule(new AppModule(application))
                 .build();
     }
 
@@ -28,7 +28,7 @@ public class AppComponentWrapper {
      * @return the injector
      */
     public static AppComponent getInjector() {
-        Preconditions.checkNotNull(appComponent, "appComponent is not init.");
+        Preconditions.checkNotNull(appComponent, "appComponent not init");
         return appComponent;
     }
 

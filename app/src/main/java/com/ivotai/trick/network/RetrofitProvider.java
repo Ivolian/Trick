@@ -1,7 +1,6 @@
 package com.ivotai.trick.network;
 
-import com.facebook.stetho.okhttp3.StethoInterceptor;
-import com.ivotai.trick.global.GlobalSettings;
+import com.ivotai.trick.config.GlobalSettings;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -31,7 +30,7 @@ public class RetrofitProvider {
     public final Retrofit provide() {
         OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder();
         if (GlobalSettings.useStetho()) {
-            okHttpClientBuilder.addNetworkInterceptor(new StethoInterceptor());
+//            okHttpClientBuilder.addNetworkInterceptor(new StethoInterceptor());
         }
         OkHttpClient okHttpClient = okHttpClientBuilder.build();
         return new Retrofit.Builder().client(okHttpClient)

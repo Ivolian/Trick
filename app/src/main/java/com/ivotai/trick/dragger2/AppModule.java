@@ -3,7 +3,6 @@ package com.ivotai.trick.dragger2;
 import android.app.Application;
 import android.content.Context;
 
-import com.ivotai.trick.TrickApplication;
 import com.ivotai.trick.network.RetrofitProvider;
 import com.ivotai.trick.network.service.BookService;
 
@@ -17,21 +16,21 @@ import retrofit2.Retrofit;
 @Module
 class AppModule {
 
-    private final TrickApplication trickApplication;
+    private final Application application;
 
-    AppModule(TrickApplication trickApplication) {
-        this.trickApplication = trickApplication;
+    AppModule(Application application) {
+        this.application = application;
     }
 
     @Provides
     Application provideApplication() {
-        return trickApplication;
+        return application;
     }
 
     @Singleton
     @Provides
     Context provideContext() {
-        return trickApplication.getApplicationContext();
+        return application.getApplicationContext();
     }
 
     @Singleton

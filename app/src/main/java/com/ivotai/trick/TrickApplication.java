@@ -2,9 +2,8 @@ package com.ivotai.trick;
 
 import android.app.Application;
 
-import com.facebook.stetho.Stetho;
 import com.ivotai.trick.config.GlobalSettings;
-import com.ivotai.trick.dragger2.AppComponentWrapper;
+import com.ivotai.trick.dragger2.AppComponentHolder;
 
 /**
  * The type Trick application.
@@ -14,18 +13,18 @@ public class TrickApplication extends Application {
     @Override
     public final void onCreate() {
         super.onCreate();
-        init();
+        initWorks();
     }
 
-    private void init() {
-        AppComponentWrapper.init(this);
+    private void initWorks() {
+        AppComponentHolder.initAppComponent(this);
 //        LeakCanary.install(this);
-        initStetho();
+//        initStetho();
     }
 
     private void initStetho() {
         if (GlobalSettings.useStetho()) {
-            Stetho.initializeWithDefaults(this);
+//            Stetho.initializeWithDefaults(this);
         }
     }
 

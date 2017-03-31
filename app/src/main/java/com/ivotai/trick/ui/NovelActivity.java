@@ -7,7 +7,7 @@ import com.hitomi.cslibrary.CrazyShadow;
 import com.hitomi.cslibrary.base.CrazyShadowDirection;
 import com.ivotai.trick.R;
 import com.ivotai.trick.base.ToolbarActivity;
-import com.ivotai.trick.dragger2.AppComponentWrapper;
+import com.ivotai.trick.dragger2.AppComponentHolder;
 import com.ivotai.trick.network.fetcher.BookFetcher;
 import com.ivotai.trick.util.DensityUtil;
 
@@ -32,7 +32,7 @@ public class NovelActivity extends ToolbarActivity {
 
     @Override
     protected void injectDependency() {
-        AppComponentWrapper.getInjector().inject(this);
+        AppComponentHolder.getInjector().inject(this);
     }
 
     @Override

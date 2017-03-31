@@ -1,4 +1,4 @@
-package com.ivotai.trick.global;
+package com.ivotai.trick.config;
 
 /**
  * The type Global settings.
@@ -8,9 +8,9 @@ public final class GlobalSettings {
     private GlobalSettings() {
     }
 
-    private static final String BASE_URL = "http://android.reader.qq.com/v6_3_9/";
+    private static final Boolean DEVELOPMENT_MODE = true;
 
-    private static final Boolean USE_STETHO = true;
+    private static final String BASE_URL = "http://android.reader.qq.com/v6_3_9/";
 
     /**
      * Use stetho boolean.
@@ -18,7 +18,7 @@ public final class GlobalSettings {
      * @return the boolean
      */
     public static Boolean useStetho() {
-        return USE_STETHO;
+        return DEVELOPMENT_MODE;
     }
 
     /**
