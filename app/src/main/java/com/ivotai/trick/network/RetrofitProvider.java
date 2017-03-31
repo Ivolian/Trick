@@ -1,9 +1,10 @@
 package com.ivotai.trick.network;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
-import com.ivotai.trick.config.GlobalSettings;
+import com.ivotai.trick.global.GlobalSettings;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -12,6 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * The type Retrofit provider.
  */
+@Singleton
 public class RetrofitProvider {
 
     /**

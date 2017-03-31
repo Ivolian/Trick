@@ -1,4 +1,4 @@
-package com.ivotai.trick.config;
+package com.ivotai.trick.global;
 
 /**
  * The type Global settings.

@@ -1,7 +1,8 @@
 package com.ivotai.trick.dragger2;
 
 import com.ivotai.trick.TrickApplication;
-import com.ivotai.trick.exception.NotInitException;
+
+import dagger.internal.Preconditions;
 
 /**
  * The type App component wrapper.
@@ -27,9 +28,7 @@ public class AppComponentWrapper {
      * @return the injector
      */
     public static AppComponent getInjector() {
-        if (appComponent == null) {
-            throw new NotInitException("appComponent need init first");
-        }
+        Preconditions.checkNotNull(appComponent, "appComponent is not init.");
         return appComponent;
     }
 

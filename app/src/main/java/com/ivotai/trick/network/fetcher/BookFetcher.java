@@ -4,9 +4,11 @@ import com.ivotai.trick.model.BookResponse;
 import com.ivotai.trick.network.service.BookService;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import retrofit2.Call;
 
+@Singleton
 public class BookFetcher {
 
     private final BookService bookService;
