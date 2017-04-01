@@ -12,8 +12,8 @@ import butterknife.BindView;
 public abstract class ToolbarActivity extends BaseActivity {
 
     @Override
-    protected void initViews() {
-        renderToolbarTitle();
+    protected void renderViews() {
+        renderToolbar();
     }
 
     /**
@@ -22,7 +22,7 @@ public abstract class ToolbarActivity extends BaseActivity {
     @BindView(R.id.tvToolbarTitle)
     TextView tvToolbarTitle;
 
-    private void renderToolbarTitle() {
+    private void renderToolbar() {
         String toolbarTitle = toolbarTitle();
         if (toolbarTitle != null) {
             tvToolbarTitle.setText(toolbarTitle);

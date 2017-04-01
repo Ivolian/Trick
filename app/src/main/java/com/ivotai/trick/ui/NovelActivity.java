@@ -36,8 +36,8 @@ public class NovelActivity extends ToolbarActivity {
     }
 
     @Override
-    protected void initViews() {
-        super.initViews();
+    protected void renderViews() {
+        super.renderViews();
         addShadowForOperationBar();
     }
 

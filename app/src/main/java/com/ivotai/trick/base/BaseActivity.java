@@ -25,7 +25,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         injectDependency();
 
-        initViews();
+        renderViews();
         initWorks();
     }
 
@@ -47,7 +47,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * Init views.
      */
-    protected void initViews() {
+    protected void renderViews() {
 
     }
 
@@ -58,7 +58,11 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     * Hide status bar boolean.
+     *
+     * @return the boolean
+     */
     protected boolean hideStatusBar() {
         return false;
     }

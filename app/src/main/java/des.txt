@@ -1,6 +1,4 @@
 描述文档
 
-1. 该项目使用一些新的技术。
+//  TODO Rx 压力
 
-
-1. Why we need dagger2?
