@@ -29,9 +29,7 @@ public class RetrofitProvider {
      */
     public final Retrofit provide() {
         OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder();
-        if (GlobalSettings.useStetho()) {
 //            okHttpClientBuilder.addNetworkInterceptor(new StethoInterceptor());
-        }
         OkHttpClient okHttpClient = okHttpClientBuilder.build();
         return new Retrofit.Builder().client(okHttpClient)
                 .baseUrl(GlobalSettings.baseUrl())

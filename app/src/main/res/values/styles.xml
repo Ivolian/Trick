@@ -9,4 +9,27 @@
         <!--<item name="android:windowFullscreen">true</item>-->
     </style>
 
+    <style name="TvSideBarItem">
+        <item name="android:textColor">@color/md_white</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginLeft">8dp</item>
+    </style>
+
+    <style name="IvSideBarItem">
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:layout_height">16dp</item>
+        <item name="android:layout_width">16dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+    </style>
+
+    <style name="LlSideBarItem">
+        <item name="android:background">@color/sideBarItemBg</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
 </resources>

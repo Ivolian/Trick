@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_slide_bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_marginTop="48dp"
+        android:background="@color/sideBarItemBg">
+
+        <ImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/profile_default_avatar" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/ivAvatar"
+            android:layout_marginTop="2dp"
+            android:layout_toRightOf="@+id/ivAvatar"
+            android:text="立即登录"
+            android:textColor="@color/md_white"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ivAvatar"
+            android:layout_marginBottom="2dp"
+            android:layout_toRightOf="@+id/ivAvatar"
+            android:text="账户信息，购买记录云同步"
+            android:textColor="@color/md_white"
+            android:textSize="14dp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        style="@style/LlSideBarItem"
+        android:layout_marginTop="8dp">
+
+        <ImageView
+            style="@style/IvSideBarItem"
+            android:src="@drawable/profile_account_icon" />
+
+        <TextView
+            style="@style/TvSideBarItem"
+            android:text="我的账户" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/LlSideBarItem">
+
+        <ImageView
+            style="@style/IvSideBarItem"
+            android:src="@drawable/profile_month_icon" />
+
+        <TextView
+            style="@style/TvSideBarItem"
+            android:text="包月特权" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/LlSideBarItem">
+
+        <ImageView
+            style="@style/IvSideBarItem"
+            android:src="@drawable/profile_package_icon" />
+
+        <TextView
+            style="@style/TvSideBarItem"
+            android:text="我的超值包" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/LlSideBarItem"
+        android:layout_marginTop="8dp">
+
+        <ImageView
+            style="@style/IvSideBarItem"
+            android:src="@drawable/message_icon" />
+
+        <TextView
+            style="@style/TvSideBarItem"
+            android:text="我的消息" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/LlSideBarItem">
+
+        <ImageView
+            style="@style/IvSideBarItem"
+            android:src="@drawable/profile_history_icon" />
+
+        <TextView
+            style="@style/TvSideBarItem"
+            android:text="浏览历史" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/LlSideBarItem">
+
+        <ImageView
+            style="@style/IvSideBarItem"
+            android:src="@drawable/profile_collection_icon" />
+
+        <TextView
+            style="@style/TvSideBarItem"
+            android:text="我的收藏" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/LlSideBarItem">
+
+        <ImageView
+            style="@style/IvSideBarItem"
+            android:src="@drawable/my_gene" />
+
+        <TextView
+            style="@style/TvSideBarItem"
+            android:text="我的基因" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/LlSideBarItem"
+        android:layout_marginTop="8dp">
+
+        <ImageView
+            style="@style/IvSideBarItem"
+            android:src="@drawable/profile_icon_to_be_writer" />
+
+        <TextView
+            style="@style/TvSideBarItem"
+            android:text="成为作家" />
+
+    </LinearLayout>
+
+</LinearLayout>
+

@@ -58,7 +58,7 @@ public class NovelActivity extends ToolbarActivity {
     }
 
     @Inject
-    protected BookFetcher bookFetcher;
+    BookFetcher bookFetcher;
 
     @Override
     protected void initWorks() {

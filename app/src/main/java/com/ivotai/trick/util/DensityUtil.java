@@ -7,6 +7,9 @@ import android.content.Context;
  */
 public class DensityUtil {
 
+    private DensityUtil() {
+    }
+
     /**
      * Dip 2 px int.
      *

@@ -9,6 +9,9 @@ import dagger.internal.Preconditions;
  */
 public class AppComponentHolder {
 
+    private AppComponentHolder() {
+    }
+
     private static AppComponent appComponent;
 
     /**
