@@ -1,5 +1,6 @@
 package com.ivotai.trick.dragger2;
 
+import com.ivotai.trick.MainActivity;
 import com.ivotai.trick.ui.NovelActivity;
 
 import javax.inject.Singleton;
@@ -8,7 +9,6 @@ import dagger.Component;
 
 /**
  * The interface App component.
- * 注入器
  */
 @Singleton
 @Component(modules = {AppModule.class})
@@ -17,8 +17,15 @@ import dagger.Component;
     /**
      * Inject.
      *
-     * @param novelActivity the novel activity
+     * @param o the o
      */
-    void inject(NovelActivity novelActivity);
+    void inject(NovelActivity o);
+
+    /**
+     * Inject.
+     *
+     * @param o the o
+     */
+    void inject(MainActivity o);
 
 }

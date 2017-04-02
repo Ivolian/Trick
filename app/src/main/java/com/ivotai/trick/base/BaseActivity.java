@@ -25,7 +25,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         injectDependency();
 
-        renderViews();
+        initViews();
         initWorks();
     }
 
@@ -47,7 +47,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * Init views.
      */
-    protected void renderViews() {
+    protected void initViews() {
 
     }
 

@@ -12,7 +12,7 @@ import butterknife.BindView;
 public abstract class ToolbarActivity extends BaseActivity {
 
     @Override
-    protected void renderViews() {
+    protected void initViews() {
         renderToolbar();
     }
 

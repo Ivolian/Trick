@@ -7,6 +7,7 @@ import javax.inject.Singleton;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -33,6 +34,7 @@ public class RetrofitProvider {
         OkHttpClient okHttpClient = okHttpClientBuilder.build();
         return new Retrofit.Builder().client(okHttpClient)
                 .baseUrl(GlobalSettings.baseUrl())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
