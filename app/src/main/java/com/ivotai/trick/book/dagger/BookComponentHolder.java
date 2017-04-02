@@ -12,7 +12,7 @@ import static com.ivotai.trick.book.dagger.DaggerBookComponent.*;
  * The type Book component holder.
  * 负责BookComponent的初始化和持有
  */
-public class BookComponentHolder {
+public final class BookComponentHolder {
 
     private BookComponentHolder() {
     }

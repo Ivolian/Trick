@@ -11,19 +11,33 @@ import javax.inject.Inject;
 
 import rx.Subscriber;
 
+/**
+ * The type Book presenter.
+ */
 public class BookPresenter implements BasePresenter {
 
     private final BookRepository bookRepository;
 
     private final BookView bookView;
 
+    /**
+     * Instantiates a new Book presenter.
+     *
+     * @param bookRepository the book repository
+     * @param bookView       the book view
+     */
     @Inject
-    public BookPresenter(BookRepository bookRepository, BookView bookView) {
+    BookPresenter(BookRepository bookRepository, BookView bookView) {
         this.bookRepository = bookRepository;
         this.bookView = bookView;
     }
 
-    public void loadBooks(int pagestamp) {
+    /**
+     * Load books.
+     *
+     * @param pagestamp the pagestamp
+     */
+    public final void loadBooks(int pagestamp) {
         bookView.setProgressIndicator(true);
         bookRepository.getBooksByPagestamp(pagestamp).subscribe(new Subscriber<List<Book>>() {
             @Override

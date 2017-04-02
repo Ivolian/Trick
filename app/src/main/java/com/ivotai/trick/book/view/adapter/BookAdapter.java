@@ -1,10 +1,13 @@
-package com.ivotai.trick;
+package com.ivotai.trick.book.view.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ivotai.trick.R;
+import com.ivotai.trick.book.view.viewholder.HeaderBookViewHolder;
+import com.ivotai.trick.book.view.viewholder.ItemBookViewHolder;
 import com.ivotai.trick.model.Book;
 import com.karumi.headerrecyclerview.HeaderRecyclerViewAdapter;
 

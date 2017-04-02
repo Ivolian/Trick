@@ -13,15 +13,29 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 
+/**
+ * The type Book repository.
+ */
 public class BookRepository {
 
     private final BookService bookService;
 
+    /**
+     * Instantiates a new Book repository.
+     *
+     * @param bookService the book service
+     */
     @Inject
-    public BookRepository(BookService bookService) {
+    BookRepository(BookService bookService) {
         this.bookService = bookService;
     }
 
+    /**
+     * Gets books by pagestamp.
+     *
+     * @param pagestamp the pagestamp
+     * @return the books by pagestamp
+     */
     public Observable<List<Book>> getBooksByPagestamp(int pagestamp) {
         return bookService.getBooks("categoryV3", ",-1,-1,-1,-1,6", "20001", pagestamp)
                 .subscribeOn(Schedulers.io())

@@ -4,11 +4,11 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.ivotai.trick.BookAdapter;
 import com.ivotai.trick.R;
 import com.ivotai.trick.base.BaseActivity;
 import com.ivotai.trick.book.dagger.BookComponentHolder;
 import com.ivotai.trick.book.presenter.BookPresenter;
+import com.ivotai.trick.book.view.adapter.BookAdapter;
 import com.ivotai.trick.model.Book;
 
 import java.util.List;
@@ -68,7 +68,7 @@ public class BookActivity extends BaseActivity implements BookView {
     RecyclerView rvBookList;
 
 
-    BookAdapter bookAdapter;
+    private BookAdapter bookAdapter;
 
     private void initRvBookList() {
         rvBookList.setLayoutManager(new LinearLayoutManager(this));

@@ -7,20 +7,39 @@ import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
 
+/**
+ * The type Book module.
+ */
 @Module
 class BookModule {
 
-    private final BookView bookView;
+    private final BookView mBookView;
 
+    /**
+     * Instantiates a new Book module.
+     *
+     * @param bookView the book view
+     */
     BookModule(BookView bookView) {
-        this.bookView = bookView;
+        mBookView = bookView;
     }
 
+    /**
+     * Provide book view book view.
+     *
+     * @return the book view
+     */
     @Provides
     BookView provideBookView() {
-        return bookView;
+        return mBookView;
     }
 
+    /**
+     * Provide book service book service.
+     *
+     * @param retrofit the retrofit
+     * @return the book service
+     */
     @Provides
     BookService provideBookService(Retrofit retrofit) {
         return retrofit.create(BookService.class);
