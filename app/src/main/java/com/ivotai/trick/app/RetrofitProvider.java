@@ -9,15 +9,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * The type Retrofit provider.
+ * 完成 Retrofit 的初始化工作
  */
 
-public class RetrofitProvider {
+class RetrofitProvider {
 
     /**
      * Instantiates a new Retrofit provider.
      */
     @Inject
-    public RetrofitProvider() {
+    RetrofitProvider() {
     }
 
     /**
@@ -25,14 +26,15 @@ public class RetrofitProvider {
      *
      * @return the retrofit
      */
-     final Retrofit provide() {
+    final Retrofit provide() {
         OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder();
 //            okHttpClientBuilder.addNetworkInterceptor(new StethoInterceptor());
         OkHttpClient okHttpClient = okHttpClientBuilder.build();
-        return new Retrofit.Builder().client(okHttpClient)
-                .baseUrl(AppSettings.baseUrl())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+        return new Retrofit.Builder()
+                .client(okHttpClient)
+                .baseUrl(AppConfig.baseUrl())
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
     }
 

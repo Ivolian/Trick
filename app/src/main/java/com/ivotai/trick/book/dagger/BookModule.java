@@ -1,17 +1,18 @@
-package com.ivotai.trick.book;
+package com.ivotai.trick.book.dagger;
 
-import com.ivotai.trick.BookView;
+import com.ivotai.trick.book.service.BookService;
+import com.ivotai.trick.book.view.BookView;
 
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
 
 @Module
-public class BookModule {
+class BookModule {
 
     private final BookView bookView;
 
-    public BookModule(BookView bookView) {
+    BookModule(BookView bookView) {
         this.bookView = bookView;
     }
 

@@ -1,13 +1,14 @@
-package com.ivotai.trick.book;
+package com.ivotai.trick.book.view;
 
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.ivotai.trick.BookAdapter;
-import com.ivotai.trick.BookView;
 import com.ivotai.trick.R;
 import com.ivotai.trick.base.BaseActivity;
+import com.ivotai.trick.book.dagger.BookComponentHolder;
+import com.ivotai.trick.book.presenter.BookPresenter;
 import com.ivotai.trick.model.Book;
 
 import java.util.List;
@@ -21,12 +22,12 @@ import butterknife.BindView;
 public class BookActivity extends BaseActivity implements BookView {
 
     @Override
-    protected boolean hideStatusBar() {
+    protected boolean needHideStatusBar() {
         return true;
     }
 
     @Override
-    protected void initDaggerComponent() {
+    protected void injectDependency() {
         BookComponentHolder.initBookComponent(this);
         BookComponentHolder.getBookComponent().inject(this);
     }

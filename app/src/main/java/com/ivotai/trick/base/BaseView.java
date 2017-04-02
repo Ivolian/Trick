@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.ivotai.trick;
+package com.ivotai.trick.base;
 
 public interface BaseView {
 

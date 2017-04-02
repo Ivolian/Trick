@@ -27,7 +27,7 @@ public class NovelActivity extends ToolbarActivity {
     }
 
     @Override
-    protected void initDaggerComponent() {
+    protected void injectDependency() {
 //        AppComponentHolder.getBookComponent().inject(this);
     }
 

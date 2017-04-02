@@ -1,5 +1,6 @@
-package com.ivotai.trick;
+package com.ivotai.trick.book.view;
 
+import com.ivotai.trick.base.BaseView;
 import com.ivotai.trick.model.Book;
 
 import java.util.List;

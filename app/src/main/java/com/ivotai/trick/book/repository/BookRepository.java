@@ -1,8 +1,8 @@
-package com.ivotai.trick;
+package com.ivotai.trick.book.repository;
 
 import com.ivotai.trick.model.Book;
 import com.ivotai.trick.model.BookResponse;
-import com.ivotai.trick.book.BookService;
+import com.ivotai.trick.book.service.BookService;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class BookRepository {
     }
 
     public Observable<List<Book>> getBooksByPagestamp(int pagestamp) {
-        return bookService.listBook("categoryV3", ",-1,-1,-1,-1,6", "20001", pagestamp)
+        return bookService.getBooks("categoryV3", ",-1,-1,-1,-1,6", "20001", pagestamp)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(BookResponse::getBookList);

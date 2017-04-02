@@ -6,8 +6,9 @@ import dagger.internal.Preconditions;
 
 /**
  * The type App component holder.
+ * 负责AppComponent的初始化和持有
  */
-public class AppComponentHolder {
+public final class AppComponentHolder {
 
     private AppComponentHolder() {
     }
@@ -32,7 +33,7 @@ public class AppComponentHolder {
      * @return the app component
      */
     public static AppComponent getAppComponent() {
-        Preconditions.checkNotNull(appComponent, "component need init");
+        Preconditions.checkNotNull(appComponent, "Component need to be initialized.");
         return appComponent;
     }
 

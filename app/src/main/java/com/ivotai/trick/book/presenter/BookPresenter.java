@@ -1,8 +1,8 @@
-package com.ivotai.trick.book;
+package com.ivotai.trick.book.presenter;
 
-import com.ivotai.trick.BasePresenter;
-import com.ivotai.trick.BookRepository;
-import com.ivotai.trick.BookView;
+import com.ivotai.trick.base.BasePresenter;
+import com.ivotai.trick.book.repository.BookRepository;
+import com.ivotai.trick.book.view.BookView;
 import com.ivotai.trick.model.Book;
 
 import java.util.List;
