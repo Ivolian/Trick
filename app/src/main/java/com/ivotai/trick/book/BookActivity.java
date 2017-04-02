@@ -1,14 +1,14 @@
-package com.ivotai.trick;
+package com.ivotai.trick.book;
 
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.ivotai.trick.BookAdapter;
+import com.ivotai.trick.BookView;
+import com.ivotai.trick.R;
 import com.ivotai.trick.base.BaseActivity;
-import com.ivotai.trick.dragger2.AppComponentHolder;
 import com.ivotai.trick.model.Book;
-import com.ivotai.trick.model.BookResponse;
-import com.ivotai.trick.network.fetcher.BookFetcher;
 
 import java.util.List;
 
@@ -16,12 +16,9 @@ import javax.inject.Inject;
 
 import butterknife.BindColor;
 import butterknife.BindView;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 
-public class MainActivity extends BaseActivity {
+public class BookActivity extends BaseActivity implements BookView {
 
     @Override
     protected boolean hideStatusBar() {
@@ -29,8 +26,9 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void injectDependency() {
-        AppComponentHolder.getInjector().inject(this);
+    protected void initDaggerComponent() {
+        BookComponentHolder.initBookComponent(this);
+        BookComponentHolder.getBookComponent().inject(this);
     }
 
     @Override
@@ -44,9 +42,14 @@ public class MainActivity extends BaseActivity {
         initRvBookList();
     }
 
+    @Inject
+    BookPresenter bookPresenter;
+
+
     @Override
     protected void initWorks() {
-        fetchBooks();
+        final int pagestamp = 1;
+        bookPresenter.loadBooks(pagestamp);
     }
 
     @BindView(R.id.swipeRefreshLayout)
@@ -63,8 +66,6 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.rvBookList)
     RecyclerView rvBookList;
 
-    @Inject
-    BookFetcher bookFetcher;
 
     BookAdapter bookAdapter;
 
@@ -73,31 +74,21 @@ public class MainActivity extends BaseActivity {
         rvBookList.setAdapter(bookAdapter = new BookAdapter());
     }
 
-    private void fetchBooks() {
-        bookFetcher.fetch(1)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .map(BookResponse::getBookList)
-                .subscribe(new Subscriber<List<Book>>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                    }
-
-                    @Override
-                    public void onNext(List<Book> bookList) {
-                        bookAdapter.setHeader(new Object());
-                        bookAdapter.setItems(bookList);
-                        bookAdapter.notifyDataSetChanged();
-                    }
-                });
-
-
+    @Override
+    public void setProgressIndicator(boolean active) {
+        // todo
     }
 
+    @Override
+    public void showLoadError() {
+        // todo
+    }
+
+    @Override
+    public void renderBooks(List<Book> books) {
+        bookAdapter.setHeader(new Object());
+        bookAdapter.setItems(books);
+        bookAdapter.notifyDataSetChanged();
+    }
 
 }

@@ -1,4 +1,4 @@
-package com.ivotai.trick.network.service;
+package com.ivotai.trick.book;
 
 import com.ivotai.trick.model.BookResponse;
 

@@ -23,7 +23,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(layoutResID());
         ButterKnife.bind(this);
 
-        injectDependency();
+        initDaggerComponent();
 
         initViews();
         initWorks();
@@ -40,7 +40,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * Inject dependency.
      */
-    protected void injectDependency() {
+    protected void initDaggerComponent() {
 
     }
 

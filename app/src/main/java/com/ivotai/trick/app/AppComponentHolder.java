@@ -1,4 +1,4 @@
-package com.ivotai.trick.dragger2;
+package com.ivotai.trick.app;
 
 import android.app.Application;
 
@@ -20,18 +20,19 @@ public class AppComponentHolder {
      * @param application the application
      */
     public static void initAppComponent(Application application) {
+        AppModule appModule = new AppModule(application);
         appComponent = DaggerAppComponent.builder()
-                .appModule(new AppModule(application))
+                .appModule(appModule)
                 .build();
     }
 
     /**
-     * Gets injector.
+     * Gets app component.
      *
-     * @return the injector
+     * @return the app component
      */
-    public static AppComponent getInjector() {
-        Preconditions.checkNotNull(appComponent, "appComponent not init");
+    public static AppComponent getAppComponent() {
+        Preconditions.checkNotNull(appComponent, "component need init");
         return appComponent;
     }
 

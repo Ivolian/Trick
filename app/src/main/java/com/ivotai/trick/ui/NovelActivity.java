@@ -7,11 +7,7 @@ import com.hitomi.cslibrary.CrazyShadow;
 import com.hitomi.cslibrary.base.CrazyShadowDirection;
 import com.ivotai.trick.R;
 import com.ivotai.trick.base.ToolbarActivity;
-import com.ivotai.trick.dragger2.AppComponentHolder;
-import com.ivotai.trick.network.fetcher.BookFetcher;
 import com.ivotai.trick.util.DensityUtil;
-
-import javax.inject.Inject;
 
 import butterknife.BindView;
 
@@ -31,8 +27,8 @@ public class NovelActivity extends ToolbarActivity {
     }
 
     @Override
-    protected void injectDependency() {
-        AppComponentHolder.getInjector().inject(this);
+    protected void initDaggerComponent() {
+//        AppComponentHolder.getBookComponent().inject(this);
     }
 
     @Override
@@ -57,21 +53,7 @@ public class NovelActivity extends ToolbarActivity {
                 .action(llOperationBar);
     }
 
-    @Inject
-    BookFetcher bookFetcher;
 
-    @Override
-    protected void initWorks() {
-        fetchBook();
-    }
-
-    private void fetchBook() {
-        try {
-            bookFetcher.fetch(1);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
 
 }

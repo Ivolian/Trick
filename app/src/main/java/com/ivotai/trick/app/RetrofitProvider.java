@@ -1,9 +1,6 @@
-package com.ivotai.trick.network;
-
-import com.ivotai.trick.config.GlobalSettings;
+package com.ivotai.trick.app;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -13,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * The type Retrofit provider.
  */
-@Singleton
+
 public class RetrofitProvider {
 
     /**
@@ -28,12 +25,12 @@ public class RetrofitProvider {
      *
      * @return the retrofit
      */
-    public final Retrofit provide() {
+     final Retrofit provide() {
         OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder();
 //            okHttpClientBuilder.addNetworkInterceptor(new StethoInterceptor());
         OkHttpClient okHttpClient = okHttpClientBuilder.build();
         return new Retrofit.Builder().client(okHttpClient)
-                .baseUrl(GlobalSettings.baseUrl())
+                .baseUrl(AppSettings.baseUrl())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();

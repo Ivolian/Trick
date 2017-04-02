@@ -2,7 +2,7 @@ package com.ivotai.trick;
 
 import android.app.Application;
 
-import com.ivotai.trick.dragger2.AppComponentHolder;
+import com.ivotai.trick.app.AppComponentHolder;
 
 /**
  * The type Trick application.
@@ -12,14 +12,13 @@ public class TrickApplication extends Application {
     @Override
     public final void onCreate() {
         super.onCreate();
-        initWorks();
+        init();
     }
 
-    private void initWorks() {
+    private void init() {
         AppComponentHolder.initAppComponent(this);
-//            Stetho.initializeWithDefaults(this);
+//        Stetho.initializeWithDefaults(this);
 //        LeakCanary.install(this);
     }
-
 
 }
