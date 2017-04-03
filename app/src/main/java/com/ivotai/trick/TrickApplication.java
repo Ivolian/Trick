@@ -7,7 +7,7 @@ import com.ivotai.trick.app.AppComponentProvider;
 /**
  * The type Trick application.
  */
-class TrickApplication extends Application {
+public class TrickApplication extends Application {
 
     @Override
     public final void onCreate() {

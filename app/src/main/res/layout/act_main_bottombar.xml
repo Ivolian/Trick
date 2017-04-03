@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llBottomBar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <LinearLayout style="@style/LlBottomBarItem">
+
+        <ImageView
+            style="@style/IvBottomBarItem"
+            android:src="@drawable/maintab_bookstand_icon_hover" />
+
+        <TextView
+            style="@style/TvBottomBarItem"
+            android:text="书架" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/LlBottomBarItem">
+
+        <ImageView
+            style="@style/IvBottomBarItem"
+            android:src="@drawable/maintab_city_icon" />
+
+        <TextView
+            style="@style/TvBottomBarItem"
+            android:text="精选" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/LlBottomBarItem">
+
+        <ImageView
+            style="@style/IvBottomBarItem"
+            android:src="@drawable/maintab_stack_icon" />
+
+        <TextView
+            style="@style/TvBottomBarItem"
+            android:text="书库" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/LlBottomBarItem">
+
+        <ImageView
+            style="@style/IvBottomBarItem"
+            android:src="@drawable/maintab_category_icon" />
+
+        <TextView
+            style="@style/TvBottomBarItem"
+            android:text="发现" />
+
+    </LinearLayout>
+
+</LinearLayout>

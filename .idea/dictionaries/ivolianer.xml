@@ -2,9 +2,12 @@
   <dictionary name="ivolianer">
     <words>
       <w>avator</w>
+      <w>bookstand</w>
+      <w>bottombar</w>
       <w>greendao</w>
       <w>leakcanary</w>
       <w>liwu</w>
+      <w>maintab</w>
       <w>okhttp</w>
       <w>pagestamp</w>
       <w>resultcode</w>

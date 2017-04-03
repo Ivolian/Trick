@@ -1,5 +1,6 @@
 package com.ivotai.trick.app;
 
+import com.ivotai.trick.MainActivity;
 import com.ivotai.trick.book.view.BookListScrollWatcher;
 import com.ivotai.trick.book.view.viewholder.HeaderBookViewHolder;
 import com.ivotai.trick.book.view.viewholder.ItemBookViewHolder;
@@ -26,26 +27,10 @@ public interface AppComponent {
 // 暴露 Retrofit 给下级 Component
     Retrofit provideRetrofit();
 
-    /**
-     * Inject.
-     *
-     * @param o the o
-     */
     void inject(ItemBookViewHolder o);
     void inject(HeaderBookViewHolder o);
-
-    /**
-     * Inject.
-     *
-     * @param o the o
-     */
     void inject(BookListScrollWatcher o);
-
-    /**
-     * Inject.
-     *
-     * @param o the o
-     */
     void inject(NovelActivity o);
+    void inject(MainActivity o);
 
 }
