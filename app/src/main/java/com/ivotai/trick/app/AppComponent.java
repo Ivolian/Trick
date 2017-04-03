@@ -1,6 +1,6 @@
 package com.ivotai.trick.app;
 
-import com.ivotai.trick.MainActivity;
+import com.ivotai.trick.main.MainActivity;
 import com.ivotai.trick.book.view.BookListScrollWatcher;
 import com.ivotai.trick.book.view.viewholder.HeaderBookViewHolder;
 import com.ivotai.trick.book.view.viewholder.ItemBookViewHolder;

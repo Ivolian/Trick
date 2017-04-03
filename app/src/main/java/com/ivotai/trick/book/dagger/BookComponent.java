@@ -1,7 +1,7 @@
 package com.ivotai.trick.book.dagger;
 
 import com.ivotai.trick.app.AppComponent;
-import com.ivotai.trick.book.view.BookActivity;
+import com.ivotai.trick.book.view.BookFragment;
 
 import dagger.Component;
 
@@ -19,6 +19,6 @@ public interface BookComponent {
      *
      * @param o the o
      */
-    void inject(BookActivity o);
+    void inject(BookFragment o);
 
 }

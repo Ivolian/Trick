@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <include layout="@layout/act_main_content" />
 
     <include
@@ -10,6 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start" />
+
+
 
 </android.support.v4.widget.DrawerLayout>
 

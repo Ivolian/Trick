@@ -1,14 +1,14 @@
-package com.ivotai.trick;
+package com.ivotai.trick.main;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 import android.widget.LinearLayout;
 
-import com.hitomi.cslibrary.CrazyShadow;
-import com.hitomi.cslibrary.base.CrazyShadowDirection;
+import com.ivotai.trick.R;
 import com.ivotai.trick.app.AppComponentProvider;
+import com.ivotai.trick.app.helper.ToastHelper;
 import com.ivotai.trick.base.BaseActivity;
+import com.ivotai.trick.book.view.BookFragment;
 import com.ivotai.trick.util.DensityUtil;
 
 import javax.inject.Inject;
@@ -34,7 +34,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initViews() {
-        addShadowForOperationBar();
+//        addShadowForOperationBar();
     }
 
     @BindView(R.id.llBottomBar)
@@ -42,25 +42,22 @@ public class MainActivity extends BaseActivity {
 
 
     @Inject
-    DensityUtil densityUtil;
+    DensityUtil denstyUtil;
 
+    @Inject
+    ToastHelper toastHelper;
 
-    private void addShadowForOperationBar() {
-        new CrazyShadow.Builder()
-                .setContext(this)
-                .setDirection(CrazyShadowDirection.TOP)
-                .setShadowRadius(densityUtil.dip2Px(5))
-                .setBaseShadowColor(ContextCompat.getColor(this, R.color.md_grey_200))
-                .setImpl(CrazyShadow.IMPL_FLOAT)
-                .action(llBottomBar);
+    @Override
+    public void onBackPressed() {
+        toastHelper.error("无法签到！");
+
     }
-
 
     @Override
     protected void initWorks() {
-        Fragment fragment = new Fragment();
+        Fragment fragment = new BookFragment();
         FragmentTransaction transition = getSupportFragmentManager().beginTransaction();
-        transition.replace(R.id.container, fragment);
+        transition.replace(R.id.contentFrame, fragment);
         transition.commit();
     }
 }

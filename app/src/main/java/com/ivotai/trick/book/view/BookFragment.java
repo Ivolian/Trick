@@ -1,12 +1,17 @@
 package com.ivotai.trick.book.view;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.ivotai.trick.R;
-import com.ivotai.trick.base.BaseActivity;
 import com.ivotai.trick.book.dagger.BookComponentProvider;
 import com.ivotai.trick.book.presenter.BookPresenter;
 import com.ivotai.trick.book.view.adapter.BookAdapter;
@@ -19,27 +24,29 @@ import javax.inject.Inject;
 
 import butterknife.BindColor;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
-public class BookActivity extends BaseActivity implements BookView {
-
+public class BookFragment extends Fragment implements BookView {
     @Override
-    protected boolean needTranslucentStatusBar() {
-        return true;
-    }
-
-    @Override
-    protected void injectDependency() {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         BookComponentProvider.init(this);
         BookComponentProvider.getBookComponent().inject(this);
+
     }
 
+    @Nullable
     @Override
-    protected final int layoutResID() {
-        return R.layout.act_book;
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.act_book, container, false);
+        ButterKnife.bind(this, root);
+        initViews();
+        initWorks();
+        return root;
     }
 
-    @Override
+
     protected void initViews() {
         initSwipeRefreshLayout();
         initRvBookList();
@@ -52,7 +59,6 @@ public class BookActivity extends BaseActivity implements BookView {
     LinearLayout llTitleBar;
 
 
-    @Override
     protected void initWorks() {
         bookPresenter.loadBooks(1);
     }
@@ -81,7 +87,7 @@ public class BookActivity extends BaseActivity implements BookView {
     private BookAdapter bookAdapter;
 
     private void initRvBookList() {
-        rvBookList.setLayoutManager(new LinearLayoutManager(this));
+        rvBookList.setLayoutManager(new LinearLayoutManager(getActivity()));
         rvBookList.setAdapter(bookAdapter = new BookAdapter());
         addScrollWatcher();
     }
