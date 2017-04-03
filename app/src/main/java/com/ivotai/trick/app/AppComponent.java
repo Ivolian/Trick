@@ -1,5 +1,7 @@
 package com.ivotai.trick.app;
 
+import com.ivotai.trick.book.view.viewholder.ItemBookViewHolder;
+
 import javax.inject.Singleton;
 
 import dagger.Component;
@@ -16,5 +18,7 @@ public interface AppComponent {
 
     // 暴露 Retrofit 给下级 Component
     Retrofit provideRetrofit();
+
+    void inject(ItemBookViewHolder o);
 
 }

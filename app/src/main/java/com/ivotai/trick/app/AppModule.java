@@ -17,7 +17,7 @@ import retrofit2.Retrofit;
 @Module
 class AppModule {
 
-    private final Application mApplication;
+    private final Context mContext;
 
     /**
      * Instantiates a new App module.
@@ -25,7 +25,7 @@ class AppModule {
      * @param application the application
      */
     AppModule(Application application) {
-        mApplication = application;
+        mContext = application.getApplicationContext();
     }
 
     /**
@@ -35,7 +35,7 @@ class AppModule {
      */
     @Provides
     Context provideContext() {
-        return mApplication.getApplicationContext();
+        return mContext;
     }
 
     /**

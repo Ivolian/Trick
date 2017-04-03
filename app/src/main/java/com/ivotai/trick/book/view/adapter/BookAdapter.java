@@ -11,7 +11,7 @@ import com.ivotai.trick.book.view.viewholder.ItemBookViewHolder;
 import com.ivotai.trick.model.Book;
 import com.karumi.headerrecyclerview.HeaderRecyclerViewAdapter;
 
-public class BookAdapter extends HeaderRecyclerViewAdapter<RecyclerView.ViewHolder,Object,Book,Object> {
+public class BookAdapter extends HeaderRecyclerViewAdapter<RecyclerView.ViewHolder, Object, Book, Object> {
 
     @Override
     protected RecyclerView.ViewHolder onCreateHeaderViewHolder(ViewGroup parent, int viewType) {
@@ -44,6 +44,8 @@ public class BookAdapter extends HeaderRecyclerViewAdapter<RecyclerView.ViewHold
     @Override
     protected void onBindItemViewHolder(RecyclerView.ViewHolder holder, int position) {
         Book book = getItem(position);
+        ItemBookViewHolder itemBookViewHolder = (ItemBookViewHolder) holder;
+        itemBookViewHolder.render(book);
 //        CharacterViewHolder characterViewHolder = (CharacterViewHolder) holder;
 //        characterViewHolder.render(character);
     }

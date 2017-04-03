@@ -40,6 +40,7 @@ class BookModule {
      * @param retrofit the retrofit
      * @return the book service
      */
+    @BookScope
     @Provides
     BookService provideBookService(Retrofit retrofit) {
         return retrofit.create(BookService.class);

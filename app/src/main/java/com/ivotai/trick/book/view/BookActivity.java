@@ -10,6 +10,7 @@ import com.ivotai.trick.book.dagger.BookComponentHolder;
 import com.ivotai.trick.book.presenter.BookPresenter;
 import com.ivotai.trick.book.view.adapter.BookAdapter;
 import com.ivotai.trick.model.Book;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class BookActivity extends BaseActivity implements BookView {
 
     @Override
     protected final int layoutResID() {
-        return R.layout.act_main;
+        return R.layout.act_book;
     }
 
     @Override
@@ -49,8 +50,7 @@ public class BookActivity extends BaseActivity implements BookView {
 
     @Override
     protected void initWorks() {
-        final int pagestamp = 1;
-        bookPresenter.loadBooks(pagestamp);
+        bookPresenter.loadBooks(1);
     }
 
     @BindView(R.id.swipeRefreshLayout)
@@ -61,12 +61,19 @@ public class BookActivity extends BaseActivity implements BookView {
 
     private void initSwipeRefreshLayout() {
         swipeRefreshLayout.setColorSchemeColors(colorPrimary);
-        swipeRefreshLayout.setOnRefreshListener(() -> swipeRefreshLayout.setRefreshing(false));
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            swipeRefreshLayout.setRefreshing(false);
+            bookPresenter.loadBooks(1);
+        });
     }
+
+
 
     @BindView(R.id.rvBookList)
     RecyclerView rvBookList;
 
+    @BindView(R.id.avi)
+    AVLoadingIndicatorView avi;
 
     private BookAdapter bookAdapter;
 
@@ -77,7 +84,11 @@ public class BookActivity extends BaseActivity implements BookView {
 
     @Override
     public void setProgressIndicator(boolean active) {
-        // todo
+        if (active) {
+            avi.show();
+        } else {
+            avi.hide();
+        }
     }
 
     @Override

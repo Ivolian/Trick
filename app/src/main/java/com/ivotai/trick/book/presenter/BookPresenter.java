@@ -42,6 +42,7 @@ public class BookPresenter implements BasePresenter {
         bookRepository.getBooksByPagestamp(pagestamp).subscribe(new Subscriber<List<Book>>() {
             @Override
             public void onCompleted() {
+
                 bookView.setProgressIndicator(false);
             }
 

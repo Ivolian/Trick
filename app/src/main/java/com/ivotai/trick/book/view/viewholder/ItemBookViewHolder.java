@@ -16,34 +16,56 @@
 
 package com.ivotai.trick.book.view.viewholder;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-/**
- * RecyclerView.ViewHolder extension which renders a DragonBallCharacter instance into a view.
- */
+import com.bumptech.glide.Glide;
+import com.ivotai.trick.R;
+import com.ivotai.trick.app.AppComponentHolder;
+import com.ivotai.trick.book.BookCoverHelper;
+import com.ivotai.trick.model.Book;
+
+import javax.inject.Inject;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+
 public class ItemBookViewHolder extends RecyclerView.ViewHolder {
 
-//  private final ImageView photoImageView;
-//  private final TextView nameTextView;
-//  private final TextView levelTextView;
-//  private final Context context;
-//
-  public ItemBookViewHolder(View itemView) {
-    super(itemView);
-//    this.context = itemView.getContext();
-//    this.photoImageView = (ImageView) itemView.findViewById(R.id.iv_photo);
-//    this.nameTextView = (TextView) itemView.findViewById(R.id.tv_name);
-//    this.levelTextView = (TextView) itemView.findViewById(R.id.tv_level);
-  }
-//
-//  public void render(DragonBallCharacter character) {
-//    String photo = character.getPhoto();
-//    String name = character.getName();
-//    String level = "Level :" + character.getLevel();
-//
-//    Picasso.with(context).load(photo).into(photoImageView);
-//    nameTextView.setText(name);
-//    levelTextView.setText(level);
-//  }
+    @Inject
+    Context mContext;
+
+    @BindView(R.id.ivCover)
+    ImageView ivCover;
+
+    @BindView(R.id.tvTitle)
+    TextView tvTitle;
+
+    @BindView(R.id.tvIntro)
+    TextView tvIntro;
+
+    public ItemBookViewHolder(View itemView) {
+        super(itemView);
+        ButterKnife.bind(this, itemView);
+        AppComponentHolder.getAppComponent().inject(this);
+    }
+
+    public void render(Book book) {
+        renderCover(book);
+        tvTitle.setText(book.getTitle());
+        tvIntro.setText(book.getIntro());
+
+    }
+
+    private void renderCover(Book book) {
+        int bid = book.getBid();
+        String coverUrl = BookCoverHelper.coverUrl(bid);
+        Glide.with(mContext).load(coverUrl).into(ivCover);
+    }
+
+
 }
