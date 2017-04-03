@@ -1,6 +1,8 @@
 package com.ivotai.trick.app;
 
+import com.ivotai.trick.book.view.BookListScrollWatcher;
 import com.ivotai.trick.book.view.viewholder.ItemBookViewHolder;
+import com.ivotai.trick.ui.NovelActivity;
 
 import javax.inject.Singleton;
 
@@ -20,5 +22,8 @@ public interface AppComponent {
     Retrofit provideRetrofit();
 
     void inject(ItemBookViewHolder o);
+    void inject(BookListScrollWatcher o);
+    void inject(NovelActivity o);
+
 
 }

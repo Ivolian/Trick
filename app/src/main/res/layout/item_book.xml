@@ -1,34 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:padding="10dp">
+    android:layout_height="144dp"
+    android:padding="16dp">
 
     <ImageView
         android:id="@+id/ivCover"
-        android:layout_width="100dp"
+        android:layout_width="80dp"
         android:layout_height="match_parent"
-        android:layout_marginRight="10dp"
-        android:background="@color/colorPrimary" />
+        android:layout_marginRight="16dp"
+        android:background="@color/colorPrimary"
+        android:scaleType="fitXY" />
 
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:textSize="18dp"
-        android:textColor="@color/md_black"
         android:layout_toRightOf="@+id/ivCover"
-        android:text="人民的名义" />
+        android:textColor="@color/md_black"
+        android:textSize="18dp" />
 
     <TextView
-        android:textColor="@color/md_grey_600"
-        android:textSize="15dp"
         android:id="@+id/tvIntro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvTitle"
         android:layout_toRightOf="@+id/ivCover"
-        android:text="佛爱的说法的发的1说法1奇偶夹蝶佛爱的说法的发的说法奇偶夹蝶" />
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/md_grey_500"
+        android:textSize="15dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/ivCover"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/ivAuthorIcon"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/card_author_icon" />
+
+        <TextView
+            android:id="@+id/tvAuthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:textColor="@color/md_grey_500"
+            android:textSize="14dp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tvRecTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/md_brown_400"
+            android:textSize="14dp" />
+
+    </LinearLayout>
 
 </RelativeLayout>

@@ -3,6 +3,7 @@ package com.ivotai.trick.book.view;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.LinearLayout;
 
 import com.ivotai.trick.R;
 import com.ivotai.trick.base.BaseActivity;
@@ -47,6 +48,9 @@ public class BookActivity extends BaseActivity implements BookView {
     @Inject
     BookPresenter bookPresenter;
 
+    @BindView(R.id.llTitleBar)
+    LinearLayout llTitleBar;
+
 
     @Override
     protected void initWorks() {
@@ -68,7 +72,6 @@ public class BookActivity extends BaseActivity implements BookView {
     }
 
 
-
     @BindView(R.id.rvBookList)
     RecyclerView rvBookList;
 
@@ -80,6 +83,8 @@ public class BookActivity extends BaseActivity implements BookView {
     private void initRvBookList() {
         rvBookList.setLayoutManager(new LinearLayoutManager(this));
         rvBookList.setAdapter(bookAdapter = new BookAdapter());
+        BookListScrollWatcher bookListScrollWatcher = new BookListScrollWatcher(rvBookList, llTitleBar);
+        bookListScrollWatcher.watch();
     }
 
     @Override

@@ -6,8 +6,11 @@ import android.widget.LinearLayout;
 import com.hitomi.cslibrary.CrazyShadow;
 import com.hitomi.cslibrary.base.CrazyShadowDirection;
 import com.ivotai.trick.R;
+import com.ivotai.trick.app.AppComponentHolder;
 import com.ivotai.trick.base.ToolbarActivity;
 import com.ivotai.trick.util.DensityUtil;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 
@@ -28,7 +31,7 @@ public class NovelActivity extends ToolbarActivity {
 
     @Override
     protected void injectDependency() {
-//        AppComponentHolder.getBookComponent().inject(this);
+        AppComponentHolder.getAppComponent().inject(this);
     }
 
     @Override
@@ -43,17 +46,19 @@ public class NovelActivity extends ToolbarActivity {
     @BindView(R.id.llOperationBar)
     LinearLayout llOperationBar;
 
+    @Inject
+    DensityUtil densityUtil;
+
+
     private void addShadowForOperationBar() {
         new CrazyShadow.Builder()
                 .setContext(this)
                 .setDirection(CrazyShadowDirection.BOTTOM)
-                .setShadowRadius(DensityUtil.dip2Px(this, 5))
+                .setShadowRadius(densityUtil.dip2Px(5))
                 .setBaseShadowColor(ContextCompat.getColor(this, R.color.md_grey_200))
                 .setImpl(CrazyShadow.IMPL_FLOAT)
                 .action(llOperationBar);
     }
-
-
 
 
 }
