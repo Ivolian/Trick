@@ -16,7 +16,7 @@ import javax.inject.Inject;
 /**
  * The type Book list scroll watcher.
  */
-class BookListScrollWatcher {
+public class BookListScrollWatcher {
 
     private final RecyclerView rvBookList;
 

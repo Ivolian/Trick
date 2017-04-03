@@ -1,6 +1,7 @@
 package com.ivotai.trick.app;
 
 import com.ivotai.trick.book.view.BookListScrollWatcher;
+import com.ivotai.trick.book.view.viewholder.HeaderBookViewHolder;
 import com.ivotai.trick.book.view.viewholder.ItemBookViewHolder;
 import com.ivotai.trick.ui.NovelActivity;
 
@@ -31,6 +32,7 @@ public interface AppComponent {
      * @param o the o
      */
     void inject(ItemBookViewHolder o);
+    void inject(HeaderBookViewHolder o);
 
     /**
      * Inject.

@@ -1,35 +1,84 @@
-
-
 package com.ivotai.trick.book.view.viewholder;
 
+import android.content.res.ColorStateList;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
+import android.support.v4.graphics.ColorUtils;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-/**
- * RecyclerView.ViewHolder extension which renders a DragonBallCharacter instance into a view.
- */
+import com.ivotai.trick.R;
+import com.ivotai.trick.app.AppComponentProvider;
+
+import butterknife.BindColor;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class HeaderBookViewHolder extends RecyclerView.ViewHolder {
 
-//  private final ImageView photoImageView;
-//  private final TextView nameTextView;
-//  private final TextView levelTextView;
-//  private final Context context;
-//
-  public HeaderBookViewHolder(View itemView) {
-    super(itemView);
-//    this.context = itemView.getContext();
-//    this.photoImageView = (ImageView) itemView.findViewById(R.id.iv_photo);
-//    this.nameTextView = (TextView) itemView.findViewById(R.id.tv_name);
-//    this.levelTextView = (TextView) itemView.findViewById(R.id.tv_level);
-  }
-//
-//  public void render(DragonBallCharacter character) {
-//    String photo = character.getPhoto();
-//    String name = character.getName();
-//    String level = "Level :" + character.getLevel();
-//
-//    Picasso.with(context).load(photo).into(photoImageView);
-//    nameTextView.setText(name);
-//    levelTextView.setText(level);
-//  }
+    @BindView(R.id.ivGift)
+    ImageView ivGift;
+
+    @BindView(R.id.tvCheckIn)
+    TextView tvCheckIn;
+
+    public HeaderBookViewHolder(View headerView) {
+        super(headerView);
+        ButterKnife.bind(this, headerView);
+        AppComponentProvider.provide().inject(this);
+        initViews();
+    }
+
+    private void initViews() {
+        initIvGift();
+        initTvCheckIn();
+    }
+
+    @BindColor(R.color.md_grey_50)
+    int md_grey_50;
+
+    private void initIvGift() {
+        GradientDrawable gradientDrawable = new GradientDrawable();
+        gradientDrawable.setCornerRadius(10000);
+        gradientDrawable.setStroke(10, ColorUtils.setAlphaComponent(md_grey_50, 100));
+        ivGift.setBackground(gradientDrawable);
+    }
+
+    @BindColor(R.color.md_white)
+    int md_white;
+    @BindColor(R.color.colorPrimary)
+    int colorPrimary;
+
+    private void initTvCheckIn() {
+        GradientDrawable unpressed = new GradientDrawable();
+        unpressed.setCornerRadius(10000);
+        unpressed.setStroke(3, md_white);
+
+        GradientDrawable pressed = new GradientDrawable();
+        pressed.setCornerRadius(10000);
+        pressed.setStroke(3, md_white);
+        pressed.setColor(md_white);
+
+
+        StateListDrawable stateListDrawable = new StateListDrawable();
+        stateListDrawable.addState(new int[]{android.R.attr.state_pressed}, pressed);
+        stateListDrawable.addState(new int[]{-android.R.attr.state_pressed}, unpressed);
+
+        ColorStateList colorStateList = new ColorStateList(
+                new int[][]{
+                        new int[]{android.R.attr.state_pressed},
+                        new int[]{-android.R.attr.state_pressed}
+                },
+                new int[]{colorPrimary, md_white}
+        );
+
+        tvCheckIn.setTextColor(colorStateList);
+        tvCheckIn.setPadding(36, 12, 36, 12);
+        tvCheckIn.setBackground(stateListDrawable);
+        tvCheckIn.setClickable(true);
+    }
+
+
 }
