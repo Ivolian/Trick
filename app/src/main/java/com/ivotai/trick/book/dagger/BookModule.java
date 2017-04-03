@@ -1,5 +1,7 @@
 package com.ivotai.trick.book.dagger;
 
+import com.ivotai.trick.book.repository.BookRepository;
+import com.ivotai.trick.book.repository.NetworkBookRepository;
 import com.ivotai.trick.book.service.BookService;
 import com.ivotai.trick.book.view.BookView;
 
@@ -13,7 +15,7 @@ import retrofit2.Retrofit;
 @Module
 class BookModule {
 
-    private final BookView mBookView;
+    private final BookView bookView;
 
     /**
      * Instantiates a new Book module.
@@ -21,7 +23,7 @@ class BookModule {
      * @param bookView the book view
      */
     BookModule(BookView bookView) {
-        mBookView = bookView;
+        this.bookView = bookView;
     }
 
     /**
@@ -31,7 +33,7 @@ class BookModule {
      */
     @Provides
     BookView provideBookView() {
-        return mBookView;
+        return bookView;
     }
 
     /**
@@ -44,6 +46,18 @@ class BookModule {
     @Provides
     BookService provideBookService(Retrofit retrofit) {
         return retrofit.create(BookService.class);
+    }
+
+    /**
+     * Provide book repository book repository.
+     *
+     * @param networkBookRepository the network book repository
+     * @return the book repository
+     */
+    @BookScope
+    @Provides
+    BookRepository provideBookRepository(NetworkBookRepository networkBookRepository) {
+        return networkBookRepository;
     }
 
 }

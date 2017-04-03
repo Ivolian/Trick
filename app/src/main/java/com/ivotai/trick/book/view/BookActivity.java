@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 
 import com.ivotai.trick.R;
 import com.ivotai.trick.base.BaseActivity;
-import com.ivotai.trick.book.dagger.BookComponentHolder;
+import com.ivotai.trick.book.dagger.BookComponentProvider;
 import com.ivotai.trick.book.presenter.BookPresenter;
 import com.ivotai.trick.book.view.adapter.BookAdapter;
 import com.ivotai.trick.model.Book;
@@ -24,14 +24,14 @@ import butterknife.BindView;
 public class BookActivity extends BaseActivity implements BookView {
 
     @Override
-    protected boolean needHideStatusBar() {
+    protected boolean needTranslucentStatusBar() {
         return true;
     }
 
     @Override
     protected void injectDependency() {
-        BookComponentHolder.initBookComponent(this);
-        BookComponentHolder.getBookComponent().inject(this);
+        BookComponentProvider.init(this);
+        BookComponentProvider.getBookComponent().inject(this);
     }
 
     @Override
@@ -83,6 +83,10 @@ public class BookActivity extends BaseActivity implements BookView {
     private void initRvBookList() {
         rvBookList.setLayoutManager(new LinearLayoutManager(this));
         rvBookList.setAdapter(bookAdapter = new BookAdapter());
+        addScrollWatcher();
+    }
+
+    private void addScrollWatcher() {
         BookListScrollWatcher bookListScrollWatcher = new BookListScrollWatcher(rvBookList, llTitleBar);
         bookListScrollWatcher.watch();
     }

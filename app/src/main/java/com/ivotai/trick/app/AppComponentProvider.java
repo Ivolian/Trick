@@ -4,23 +4,23 @@ import android.app.Application;
 
 import dagger.internal.Preconditions;
 
-/**
- * The type App component holder.
- * 负责AppComponent的初始化和持有
- */
-public final class AppComponentHolder {
 
-    private AppComponentHolder() {
+/**
+ * The type App component provider.
+ */
+public final class AppComponentProvider {
+
+    private AppComponentProvider() {
     }
 
     private static AppComponent appComponent;
 
     /**
-     * Init app component.
+     * Init.
      *
      * @param application the application
      */
-    public static void initAppComponent(Application application) {
+    public static void init(Application application) {
         AppModule appModule = new AppModule(application);
         appComponent = DaggerAppComponent.builder()
                 .appModule(appModule)
@@ -28,12 +28,12 @@ public final class AppComponentHolder {
     }
 
     /**
-     * Gets app component.
+     * Provide app component.
      *
      * @return the app component
      */
-    public static AppComponent getAppComponent() {
-        Preconditions.checkNotNull(appComponent, "Component need to be initialized.");
+    public static AppComponent provide() {
+        Preconditions.checkNotNull(appComponent, "AppComponentProvider not init.");
         return appComponent;
     }
 

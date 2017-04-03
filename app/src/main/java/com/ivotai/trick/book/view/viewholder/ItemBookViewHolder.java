@@ -10,8 +10,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.ivotai.trick.R;
-import com.ivotai.trick.app.AppComponentHolder;
-import com.ivotai.trick.book.BookCoverHelper;
+import com.ivotai.trick.app.AppComponentProvider;
+import com.ivotai.trick.book.helper.BookCoverHelper;
 import com.ivotai.trick.model.Book;
 
 import javax.inject.Inject;
@@ -44,7 +44,7 @@ public class ItemBookViewHolder extends RecyclerView.ViewHolder {
     public ItemBookViewHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
-        AppComponentHolder.getAppComponent().inject(this);
+        AppComponentProvider.provide().inject(this);
     }
 
     public void render(Book book) {

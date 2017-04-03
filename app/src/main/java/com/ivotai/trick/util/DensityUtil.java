@@ -7,7 +7,7 @@ import javax.inject.Inject;
 
 public class DensityUtil {
 
-    private Context context;
+    private final Context context;
 
     @Inject
     public DensityUtil(Context context) {

@@ -7,8 +7,8 @@ import dagger.Component;
 
 /**
  * The interface Book component.
- * Book层级依赖注入器
- * 可注入依赖：AppComponent所暴露的方法以及BookModule提供的
+ * Book的依赖注入器
+ * 可注入依赖：AppComponent所暴露的方法以及BookModule提供的部分
  */
 @BookScope
 @Component(dependencies = AppComponent.class, modules = BookModule.class)
@@ -19,6 +19,6 @@ public interface BookComponent {
      *
      * @param o the o
      */
-     void inject(BookActivity o);
+    void inject(BookActivity o);
 
 }

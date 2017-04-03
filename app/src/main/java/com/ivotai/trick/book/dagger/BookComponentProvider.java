@@ -1,31 +1,31 @@
 package com.ivotai.trick.book.dagger;
 
 import com.ivotai.trick.app.AppComponent;
-import com.ivotai.trick.app.AppComponentHolder;
+import com.ivotai.trick.app.AppComponentProvider;
 import com.ivotai.trick.book.view.BookView;
 
 import dagger.internal.Preconditions;
 
-import static com.ivotai.trick.book.dagger.DaggerBookComponent.*;
+import static com.ivotai.trick.book.dagger.DaggerBookComponent.builder;
+
 
 /**
- * The type Book component holder.
- * 负责BookComponent的初始化和持有
+ * The type Book component provider.
  */
-public final class BookComponentHolder {
+public final class BookComponentProvider {
 
-    private BookComponentHolder() {
+    private BookComponentProvider() {
     }
 
     private static BookComponent bookComponent;
 
     /**
-     * Init book component.
+     * Init.
      *
      * @param bookView the book view
      */
-    public static void initBookComponent(BookView bookView) {
-        AppComponent appComponent = AppComponentHolder.getAppComponent();
+    public static void init(BookView bookView) {
+        AppComponent appComponent = AppComponentProvider.provide();
         BookModule bookModule = new BookModule(bookView);
         bookComponent = builder()
                 .appComponent(appComponent)
@@ -39,7 +39,7 @@ public final class BookComponentHolder {
      * @return the book component
      */
     public static BookComponent getBookComponent() {
-        Preconditions.checkNotNull(bookComponent, "Component need to be initialized.");
+        Preconditions.checkNotNull(bookComponent, "BookComponentProvider not init.");
         return bookComponent;
     }
 

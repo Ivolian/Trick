@@ -8,67 +8,71 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.LinearLayout;
 
 import com.ivotai.trick.R;
-import com.ivotai.trick.app.AppComponentHolder;
+import com.ivotai.trick.app.AppComponentProvider;
 import com.ivotai.trick.util.DensityUtil;
 
 import javax.inject.Inject;
 
-public class BookListScrollWatcher {
-
+/**
+ * The type Book list scroll watcher.
+ */
+class BookListScrollWatcher {
 
     private final RecyclerView rvBookList;
 
     private final LinearLayout llTitleBar;
 
-    public BookListScrollWatcher(RecyclerView rvBookList, LinearLayout llTitleBar) {
+    /**
+     * Instantiates a new Book list scroll watcher.
+     *
+     * @param rvBookList the rv book list
+     * @param llTitleBar the ll title bar
+     */
+    BookListScrollWatcher(RecyclerView rvBookList, LinearLayout llTitleBar) {
         this.rvBookList = rvBookList;
         this.llTitleBar = llTitleBar;
-        AppComponentHolder.getAppComponent().inject(this);
+        AppComponentProvider.provide().inject(this);
     }
 
-    private int oldTotalDy = 0;
-
-    private int fadeDuration = 200;
-
-    @Inject
-    DensityUtil densityUtil;
-
+    /**
+     * The Context.
+     */
     @Inject
     Context context;
 
-    public void watch() {
+    /**
+     * The Density util.
+     */
+    @Inject
+    DensityUtil densityUtil;
+
+    private int oldTotalDy = 0;
+
+    /**
+     * Watch.
+     */
+    void watch() {
         int distance = densityUtil.dip2Px(80);
         rvBookList.addOnScrollListener(new RecyclerView.OnScrollListener() {
-
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-            }
 
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 int totalDy = oldTotalDy + dy;
                 if (oldTotalDy < distance && totalDy >= distance) {
-                    fadeInTitleBar();
+                    fadeTitleBar(true);
                 }
                 if (oldTotalDy > distance && totalDy <= distance) {
-                    fadeOutTitleBar();
+                    fadeTitleBar(false);
                 }
                 oldTotalDy = totalDy;
-
             }
         });
     }
 
-
-    private void fadeInTitleBar() {
-//        ColorUtils.setAlphaComponent()
-//        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(llTitleBar, "alpha", 0f, 1f);
-//        objectAnimator.setDuration(fadeDuration);
-//        objectAnimator.start();
-
+    private void fadeTitleBar(boolean fadeIn) {
         int colorPrimary = ContextCompat.getColor(context, R.color.colorPrimary);
-        ValueAnimator valueAnimator = ValueAnimator.ofInt(0, 255);
+        ValueAnimator valueAnimator = fadeIn ? ValueAnimator.ofInt(0, 255) : ValueAnimator.ofInt(255, 0);
+        int fadeDuration = 200;
         valueAnimator.setDuration(fadeDuration);
         valueAnimator.addUpdateListener(animation -> {
             int alpha = (int) animation.getAnimatedValue();
@@ -76,21 +80,6 @@ public class BookListScrollWatcher {
             llTitleBar.setBackgroundColor(color);
         });
         valueAnimator.start();
-
     }
-
-    private void fadeOutTitleBar() {
-        int colorPrimary = ContextCompat.getColor(context, R.color.colorPrimary);
-        ValueAnimator valueAnimator = ValueAnimator.ofInt(255, 0);
-        valueAnimator.setDuration(fadeDuration);
-        valueAnimator.addUpdateListener(animation -> {
-            int alpha = (int) animation.getAnimatedValue();
-            int color = ColorUtils.setAlphaComponent(colorPrimary, alpha);
-            llTitleBar.setBackgroundColor(color);
-        });
-        valueAnimator.start();
-
-    }
-
 
 }

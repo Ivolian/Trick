@@ -27,13 +27,6 @@ public class BookAdapter extends HeaderRecyclerViewAdapter<RecyclerView.ViewHold
         return new ItemBookViewHolder(characterView);
     }
 
-//    @Override
-//    protected RecyclerView.ViewHolder onCreateFooterViewHolder(ViewGroup parent, int viewType) {
-//        LayoutInflater inflater = getLayoutInflater(parent);
-//        View footerView = inflater.inflate(R.layout.row_dragon_ball_footer, parent, false);
-//        return new FooterViewHolder(footerView);
-//    }
-
     @Override
     protected void onBindHeaderViewHolder(RecyclerView.ViewHolder holder, int position) {
 //        DragonBallHeader header = getHeader();
@@ -50,12 +43,6 @@ public class BookAdapter extends HeaderRecyclerViewAdapter<RecyclerView.ViewHold
 //        characterViewHolder.render(character);
     }
 
-//    @Override
-//    protected void onBindFooterViewHolder(RecyclerView.ViewHolder holder, int position) {
-//        DragonBallFooter footer = getFooter();
-//        FooterViewHolder footerViewHolder = (FooterViewHolder) holder;
-//        footerViewHolder.render(footer);
-//    }
 
     private LayoutInflater getLayoutInflater(ViewGroup parent) {
         return LayoutInflater.from(parent.getContext());

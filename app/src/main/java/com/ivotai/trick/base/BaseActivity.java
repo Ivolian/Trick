@@ -16,13 +16,15 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected final void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (needHideStatusBar()) {
+        if (needTranslucentStatusBar()) {
             StatusBarCompat.translucentStatusBar(this);
         }
 
+        // bind views
         setContentView(layoutResID());
         ButterKnife.bind(this);
 
+        // use injector
         injectDependency();
 
         initViews();
@@ -59,11 +61,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     * Hide status bar boolean.
+     * Need translucent status bar boolean.
      *
      * @return the boolean
      */
-    protected boolean needHideStatusBar() {
+    protected boolean needTranslucentStatusBar() {
         return false;
     }
 

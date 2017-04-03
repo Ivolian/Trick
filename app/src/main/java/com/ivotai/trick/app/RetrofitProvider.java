@@ -32,7 +32,7 @@ class RetrofitProvider {
         OkHttpClient okHttpClient = okHttpClientBuilder.build();
         return new Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl(AppConfig.baseUrl())
+                .baseUrl(AppConfig.baseRequestUrl())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();

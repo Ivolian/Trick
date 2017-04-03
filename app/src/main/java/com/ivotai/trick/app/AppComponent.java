@@ -11,19 +11,39 @@ import retrofit2.Retrofit;
 
 /**
  * The interface App component.
- * 顶级依赖注入器
+ * 顶级 injector
  */
-
 @Singleton
 @Component(modules = {AppModule.class})
 public interface AppComponent {
 
-    // 暴露 Retrofit 给下级 Component
+    /**
+     * Provide retrofit retrofit.
+     *
+     * @return the retrofit
+     */
+// 暴露 Retrofit 给下级 Component
     Retrofit provideRetrofit();
 
+    /**
+     * Inject.
+     *
+     * @param o the o
+     */
     void inject(ItemBookViewHolder o);
-    void inject(BookListScrollWatcher o);
-    void inject(NovelActivity o);
 
+    /**
+     * Inject.
+     *
+     * @param o the o
+     */
+    void inject(BookListScrollWatcher o);
+
+    /**
+     * Inject.
+     *
+     * @param o the o
+     */
+    void inject(NovelActivity o);
 
 }
