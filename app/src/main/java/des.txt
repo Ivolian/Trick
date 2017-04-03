@@ -9,3 +9,7 @@
 //        DaoMaster daoMaster = new DaoMaster(db);
 //        DaoSession daoSession = daoMaster.newSession();
 //        setToProvide(daoSession);
+
+1. more mvp
+2. wave
+3. sidebar

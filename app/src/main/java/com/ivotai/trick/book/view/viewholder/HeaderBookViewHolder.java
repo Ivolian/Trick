@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.gelitenight.waveview.library.WaveView;
 import com.ivotai.trick.R;
 import com.ivotai.trick.app.AppComponentProvider;
 
@@ -34,6 +35,14 @@ public class HeaderBookViewHolder extends RecyclerView.ViewHolder {
     private void initViews() {
         initIvGift();
         initTvCheckIn();
+        initWaveView();
+    }
+
+    private void initWaveView() {
+        WaveHelper waveHelper = new WaveHelper(waveView);
+        int color = ColorUtils.setAlphaComponent(md_white, 10);
+        waveView.setWaveColor(color, color);
+        waveHelper.start();
     }
 
     @BindColor(R.color.md_grey_50)
@@ -50,6 +59,9 @@ public class HeaderBookViewHolder extends RecyclerView.ViewHolder {
     int md_white;
     @BindColor(R.color.colorPrimary)
     int colorPrimary;
+
+    @BindView(R.id.waveView)
+    WaveView waveView;
 
     private void initTvCheckIn() {
         GradientDrawable unpressed = new GradientDrawable();
