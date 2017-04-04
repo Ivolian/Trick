@@ -12,25 +12,14 @@ import javax.inject.Singleton;
 import dagger.Component;
 import retrofit2.Retrofit;
 
-/**
- * The interface App component.
- * APP层依赖注入器，injector
- */
+
 @Singleton
 @Component(modules = {AppModule.class})
 public interface AppComponent {
 
-    /**
-     * Provide retrofit retrofit.
-     * 将依赖暴露给下级 Component
-     *
-     * @return the retrofit
-     */
-
     Context provideContext();
 
     Retrofit provideRetrofit();
-
 
     void inject(ItemBookViewHolder o);
 
@@ -39,7 +28,5 @@ public interface AppComponent {
     void inject(BookListScrollWatcher o);
 
     void inject(NovelActivity o);
-
-//    void inject(MainActivity o);
 
 }

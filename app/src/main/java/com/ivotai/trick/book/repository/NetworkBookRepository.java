@@ -1,11 +1,10 @@
 package com.ivotai.trick.book.repository;
 
+import com.ivotai.trick.book.service.BookService;
 import com.ivotai.trick.model.Book;
 import com.ivotai.trick.model.BookResponse;
-import com.ivotai.trick.book.service.BookService;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
@@ -39,7 +38,7 @@ public class NetworkBookRepository implements BookRepository {
      */
     public Observable<List<Book>> getBooksByPagestamp(int pagestamp) {
         return bookService.getBooks("categoryV3", ",-1,-1,-1,-1,6", "20001", pagestamp)
-                .delay(2, TimeUnit.SECONDS)
+//                .delay(2, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(BookResponse::getBookList);

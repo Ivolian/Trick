@@ -17,7 +17,7 @@ public class BookAdapter extends HeaderRecyclerViewAdapter<RecyclerView.ViewHold
     @Override
     protected RecyclerView.ViewHolder onCreateHeaderViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = getLayoutInflater(parent);
-        View headerView = inflater.inflate(R.layout.head_book, parent, false);
+        View headerView = inflater.inflate(R.layout.header_book, parent, false);
         HeaderBookViewHolder headerBookViewHolder = new HeaderBookViewHolder(headerView);
         BookFragment.headerBookViewHolder = headerBookViewHolder;
         return headerBookViewHolder;

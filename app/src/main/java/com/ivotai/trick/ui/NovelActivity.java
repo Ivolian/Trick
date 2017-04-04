@@ -1,5 +1,6 @@
 package com.ivotai.trick.ui;
 
+import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.widget.LinearLayout;
 
@@ -35,8 +36,9 @@ public class NovelActivity extends ToolbarActivity {
     }
 
     @Override
-    protected void initViews() {
-        super.initViews();
+    protected void initViews(Bundle savedInstanceState) {
+        super.initViews(savedInstanceState
+        );
         addShadowForOperationBar();
     }
 

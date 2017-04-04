@@ -50,13 +50,36 @@ public class BookFragment extends Fragment implements BookView {
         return root;
     }
 
+//    @Override
+//    public void setUserVisibleHint(boolean isVisibleToUser) {
+//        super.setUserVisibleHint(isVisibleToUser);
+//        if (isVisibleToUser){
+//            if (headerBookViewHolder != null) {
+//                headerBookViewHolder.zoom();
+//            }
+//        }
+//    }
+
     @Override
-    public void onResume() {
-        super.onResume();
-        if (headerBookViewHolder != null) {
-            headerBookViewHolder.zoom();
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if(hidden){
+            //TODO now visible to user
+        } else {
+            if (headerBookViewHolder != null) {
+                headerBookViewHolder.zoom();
+            }
         }
     }
+
+
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        if (headerBookViewHolder != null) {
+//            headerBookViewHolder.zoom();
+//        }
+//    }
 
     @OnClick(R.id.ivTitleBarAvator)
     public void onAvatorClicked() {

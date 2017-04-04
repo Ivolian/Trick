@@ -1,5 +1,6 @@
 package com.ivotai.trick.base;
 
+import android.os.Bundle;
 import android.widget.TextView;
 
 import com.ivotai.trick.R;
@@ -12,7 +13,7 @@ import butterknife.BindView;
 public abstract class ToolbarActivity extends BaseActivity {
 
     @Override
-    protected void initViews() {
+    protected void initViews(Bundle savedInstanceState) {
         renderToolbar();
     }
 

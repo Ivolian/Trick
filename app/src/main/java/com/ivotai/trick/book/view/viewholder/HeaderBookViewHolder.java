@@ -7,6 +7,7 @@ import android.graphics.drawable.StateListDrawable;
 import android.support.v4.graphics.ColorUtils;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.gelitenight.waveview.library.WaveView;
@@ -16,6 +17,8 @@ import butterknife.BindColor;
 import butterknife.BindView;
 
 public class HeaderBookViewHolder extends ItemBookViewHolder {
+
+
 
     @BindView(R.id.ivGift)
     ImageView ivGift;
@@ -32,6 +35,7 @@ public class HeaderBookViewHolder extends ItemBookViewHolder {
         initIvGift();
         initTvCheckIn();
         initWaveView();
+        initDd();
     }
 
     private void initWaveView() {
@@ -91,7 +95,7 @@ public class HeaderBookViewHolder extends ItemBookViewHolder {
 
     public void zoom() {
         ValueAnimator valueAnimator = ValueAnimator.ofFloat(1.1f, 0.95f, 1.05f, 0.98f, 1f);
-        valueAnimator.setDuration(1500);
+        valueAnimator.setDuration(2000);
         valueAnimator.addUpdateListener(animation -> {
             float value = (float) animation.getAnimatedValue();
             tvCheckIn.setScaleX(value);
@@ -100,5 +104,19 @@ public class HeaderBookViewHolder extends ItemBookViewHolder {
         valueAnimator.start();
     }
 
+    @BindView(R.id.llDd)
+    LinearLayout linearLayout;
+
+
+    private void initDd(){
+//        linearLayout.setElevationShadowColor(R.color.colorPrimary);
+//        linearLayout.invalidate();
+        GradientDrawable pressed = new GradientDrawable();
+        pressed.setCornerRadius(10000);
+        pressed.setStroke(3, md_grey_50);
+        pressed.setColor(md_white);
+        linearLayout.setBackground(pressed);
+
+    }
 
 }

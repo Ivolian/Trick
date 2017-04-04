@@ -2,7 +2,6 @@ package com.ivotai.trick.app.config;
 
 /**
  * The type App config.
- * APP配置
  */
 public final class AppConfig {
 

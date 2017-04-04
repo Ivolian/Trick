@@ -1,8 +1,6 @@
 
-4. fragment 切换
 5. Toast
 6. mvp 的适用性
 7. databinding
 8. fragment 什么
-9. 覆盖的
 10. itemVIteTYpe

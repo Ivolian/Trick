@@ -1,5 +1,6 @@
 package com.ivotai.trick.main.view;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -14,6 +15,7 @@ import com.ivotai.trick.base.BaseActivity;
 import com.ivotai.trick.book.view.BookFragment;
 import com.ivotai.trick.main.dagger.MainComponentProvider;
 import com.ivotai.trick.main.presenter.MainPresenter;
+import com.ivotai.trick.maybe.SimpleFragment;
 import com.ivotai.trick.sideBar.view.SideBarFragment;
 import com.ivotai.trick.util.DensityUtil;
 
@@ -21,6 +23,7 @@ import javax.inject.Inject;
 
 import butterknife.BindColor;
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements MainView {
 
@@ -41,9 +44,14 @@ public class MainActivity extends BaseActivity implements MainView {
     }
 
     @Override
-    protected void initViews() {
-//        addShadowForOperationBar();
+    protected void initViews(Bundle savedInstanceState) {
+        if (savedInstanceState == null) {
+            initFragments();
+        }
     }
+
+
+
 
     @BindView(R.id.llBottomTabs)
     LinearLayout llBottomTabs;
@@ -65,17 +73,77 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     protected void initWorks() {
-        Fragment fragment = new BookFragment();
+
+
+    }
+
+
+    private void initFragments() {
+        Fragment fragment = new SideBarFragment();
         FragmentTransaction transition = getSupportFragmentManager().beginTransaction();
-        transition.replace(R.id.contentFrame, fragment);
+        transition.add(R.id.flSideBar, fragment, fragment.getClass().getCanonicalName());
         transition.commit();
 
-        fragment = new SideBarFragment();
+        fragment = new BookFragment();
         transition = getSupportFragmentManager().beginTransaction();
-        transition.add(R.id.flSideBar, fragment);
+        transition.add(R.id.flContent, fragment, fragment.getClass().getCanonicalName());
         transition.commit();
 
+        fragment = new SimpleFragment();
+        transition = getSupportFragmentManager().beginTransaction();
+        transition.add(R.id.flContent, fragment, fragment.getClass().getCanonicalName());
+        transition.hide(fragment);
 
+        transition.commit();
+    }
+
+    @OnClick(R.id.llBottomTab1)
+    public void bottomTabOnClick() {
+        selectBottomTab1();
+        showFragment1();
+    }
+
+    @OnClick(R.id.llBottomTab2)
+    public void bottomTabOnClick2() {
+        selectBottomTab2();
+        showFragment2();
+    }
+
+
+    private void showFragment1() {
+        String tag = BookFragment.class.getCanonicalName();
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag(tag);
+        if (fragment != null && fragment.isHidden()) {
+            FragmentTransaction transition = getSupportFragmentManager().beginTransaction();
+            transition.show(fragment);
+            transition.commit();
+        }
+
+        tag = SimpleFragment.class.getCanonicalName();
+        fragment = getSupportFragmentManager().findFragmentByTag(tag);
+        if (fragment != null && !fragment.isHidden()) {
+            FragmentTransaction transition = getSupportFragmentManager().beginTransaction();
+            transition.hide(fragment);
+            transition.commit();
+        }
+    }
+
+    private void showFragment2() {
+        String tag = SimpleFragment.class.getCanonicalName();
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag(tag);
+        if (fragment != null && fragment.isHidden()) {
+            FragmentTransaction transition = getSupportFragmentManager().beginTransaction();
+            transition.show(fragment);
+            transition.commit();
+        }
+
+        tag = BookFragment.class.getCanonicalName();
+        fragment = getSupportFragmentManager().findFragmentByTag(tag);
+        if (fragment != null && !fragment.isHidden()) {
+            FragmentTransaction transition = getSupportFragmentManager().beginTransaction();
+            transition.hide(fragment);
+            transition.commit();
+        }
     }
 
 
@@ -117,17 +185,17 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     public void selectBottomTab1() {
-        ivBottomTab1.setBackgroundResource(R.drawable.maintab_bookstand_icon_hover);
+        ivBottomTab1.setImageResource(R.drawable.maintab_bookstand_icon_hover);
         tvBottomTab1.setTextColor(colorPrimary);
-        ivBottomTab2.setBackgroundResource(R.drawable.maintab_city_icon);
+        ivBottomTab2.setImageResource(R.drawable.maintab_city_icon);
         tvBottomTab2.setTextColor(md_grey_500);
     }
 
     @Override
     public void selectBottomTab2() {
-        ivBottomTab2.setBackgroundResource(R.drawable.maintab_city_icon_hover);
+        ivBottomTab2.setImageResource(R.drawable.maintab_city_icon_hover);
         tvBottomTab2.setTextColor(colorPrimary);
-        ivBottomTab1.setBackgroundResource(R.drawable.maintab_bookstand_icon);
+        ivBottomTab1.setImageResource(R.drawable.maintab_bookstand_icon);
         tvBottomTab1.setTextColor(md_grey_500);
     }
 

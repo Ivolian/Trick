@@ -6,6 +6,7 @@
 
     <include layout="@layout/act_main_content" />
 
+
     <FrameLayout
         android:id="@+id/flSideBar"
         android:layout_width="match_parent"

@@ -27,7 +27,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         // use injector
         injectDependency();
 
-        initViews();
+        initViews(savedInstanceState);
         initWorks();
     }
 
@@ -49,7 +49,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * Init views.
      */
-    protected void initViews() {
+    protected void initViews(Bundle savedInstanceState) {
 
     }
 
