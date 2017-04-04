@@ -4,7 +4,6 @@ import android.app.Application;
 
 import com.ivotai.trick.app.provider.AppComponentProvider;
 
-
 /**
  * The type Trick application.
  */

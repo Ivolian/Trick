@@ -1,23 +1,21 @@
 package com.ivotai.trick.book.view.viewholder;
 
+import android.animation.ValueAnimator;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.support.v4.graphics.ColorUtils;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gelitenight.waveview.library.WaveView;
 import com.ivotai.trick.R;
-import com.ivotai.trick.app.provider.AppComponentProvider;
 
 import butterknife.BindColor;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
-public class HeaderBookViewHolder extends RecyclerView.ViewHolder {
+public class HeaderBookViewHolder extends ItemBookViewHolder {
 
     @BindView(R.id.ivGift)
     ImageView ivGift;
@@ -27,8 +25,6 @@ public class HeaderBookViewHolder extends RecyclerView.ViewHolder {
 
     public HeaderBookViewHolder(View headerView) {
         super(headerView);
-        ButterKnife.bind(this, headerView);
-        AppComponentProvider.provide().inject(this);
         initViews();
     }
 
@@ -87,9 +83,21 @@ public class HeaderBookViewHolder extends RecyclerView.ViewHolder {
         );
 
         tvCheckIn.setTextColor(colorStateList);
-        tvCheckIn.setPadding(36, 12, 36, 12);
+        tvCheckIn.setPadding(40, 12, 40, 12);
         tvCheckIn.setBackground(stateListDrawable);
         tvCheckIn.setClickable(true);
+
+    }
+
+    public void zoom() {
+        ValueAnimator valueAnimator = ValueAnimator.ofFloat(1.1f, 0.95f, 1.05f, 0.98f, 1f);
+        valueAnimator.setDuration(1500);
+        valueAnimator.addUpdateListener(animation -> {
+            float value = (float) animation.getAnimatedValue();
+            tvCheckIn.setScaleX(value);
+            tvCheckIn.setScaleY(value);
+        });
+        valueAnimator.start();
     }
 
 

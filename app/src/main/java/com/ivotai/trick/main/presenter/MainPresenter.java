@@ -9,6 +9,7 @@ import com.ivotai.trick.main.view.MainView;
 
 import javax.inject.Inject;
 
+
 @MainScope
 public class MainPresenter implements BasePresenter {
 
@@ -23,6 +24,10 @@ public class MainPresenter implements BasePresenter {
     }
 
     private long exitTime = 0;
+
+    public void onAvatorClicked() {
+        mainView.showSideBar();
+    }
 
 
     public void onBackPressed() {

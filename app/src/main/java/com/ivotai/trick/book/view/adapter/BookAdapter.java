@@ -6,18 +6,21 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ivotai.trick.R;
+import com.ivotai.trick.book.view.BookFragment;
 import com.ivotai.trick.book.view.viewholder.HeaderBookViewHolder;
 import com.ivotai.trick.book.view.viewholder.ItemBookViewHolder;
 import com.ivotai.trick.model.Book;
 import com.karumi.headerrecyclerview.HeaderRecyclerViewAdapter;
 
-public class BookAdapter extends HeaderRecyclerViewAdapter<RecyclerView.ViewHolder, Object, Book, Object> {
+public class BookAdapter extends HeaderRecyclerViewAdapter<RecyclerView.ViewHolder, Book, Book, Object> {
 
     @Override
     protected RecyclerView.ViewHolder onCreateHeaderViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = getLayoutInflater(parent);
         View headerView = inflater.inflate(R.layout.head_book, parent, false);
-        return new HeaderBookViewHolder(headerView);
+        HeaderBookViewHolder headerBookViewHolder = new HeaderBookViewHolder(headerView);
+        BookFragment.headerBookViewHolder = headerBookViewHolder;
+        return headerBookViewHolder;
     }
 
     @Override
@@ -29,9 +32,9 @@ public class BookAdapter extends HeaderRecyclerViewAdapter<RecyclerView.ViewHold
 
     @Override
     protected void onBindHeaderViewHolder(RecyclerView.ViewHolder holder, int position) {
-//        DragonBallHeader header = getHeader();
-//        HeaderViewHolder headerViewHolder = (HeaderViewHolder) holder;
-//        headerViewHolder.render(header);
+        Book book = getHeader();
+        HeaderBookViewHolder headerViewHolder = (HeaderBookViewHolder) holder;
+        headerViewHolder.render(book);
     }
 
     @Override

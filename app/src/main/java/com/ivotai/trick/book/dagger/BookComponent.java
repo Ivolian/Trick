@@ -1,7 +1,7 @@
 package com.ivotai.trick.book.dagger;
 
-import com.ivotai.trick.app.daggar.AppComponent;
 import com.ivotai.trick.book.view.BookFragment;
+import com.ivotai.trick.main.dagger.MainComponent;
 
 import dagger.Component;
 
@@ -11,7 +11,8 @@ import dagger.Component;
  * 可注入依赖：AppComponent所暴露的方法以及BookModule提供的部分
  */
 @BookScope
-@Component(dependencies = AppComponent.class, modules = BookModule.class)
+//@Subcomponent(modules = {BookModule.class, MainModule.class})
+@Component(dependencies = MainComponent.class, modules = BookModule.class)
 public interface BookComponent {
 
     /**

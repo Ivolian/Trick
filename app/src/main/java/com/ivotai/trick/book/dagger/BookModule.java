@@ -13,7 +13,7 @@ import retrofit2.Retrofit;
  * The type Book module.
  */
 @Module
-class BookModule {
+public class BookModule {
 
     private final BookView bookView;
 
@@ -42,7 +42,6 @@ class BookModule {
      * @param retrofit the retrofit
      * @return the book service
      */
-    @BookScope
     @Provides
     BookService provideBookService(Retrofit retrofit) {
         return retrofit.create(BookService.class);
@@ -54,7 +53,6 @@ class BookModule {
      * @param networkBookRepository the network book repository
      * @return the book repository
      */
-    @BookScope
     @Provides
     BookRepository provideBookRepository(NetworkBookRepository networkBookRepository) {
         return networkBookRepository;

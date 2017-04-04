@@ -15,6 +15,7 @@ import com.ivotai.trick.R;
 import com.ivotai.trick.book.dagger.BookComponentProvider;
 import com.ivotai.trick.book.presenter.BookPresenter;
 import com.ivotai.trick.book.view.adapter.BookAdapter;
+import com.ivotai.trick.book.view.viewholder.HeaderBookViewHolder;
 import com.ivotai.trick.model.Book;
 import com.wang.avi.AVLoadingIndicatorView;
 
@@ -25,6 +26,7 @@ import javax.inject.Inject;
 import butterknife.BindColor;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 public class BookFragment extends Fragment implements BookView {
@@ -36,6 +38,8 @@ public class BookFragment extends Fragment implements BookView {
 
     }
 
+    public static HeaderBookViewHolder headerBookViewHolder;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -44,6 +48,19 @@ public class BookFragment extends Fragment implements BookView {
         initViews();
         initWorks();
         return root;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (headerBookViewHolder != null) {
+            headerBookViewHolder.zoom();
+        }
+    }
+
+    @OnClick(R.id.ivTitleBarAvator)
+    public void onAvatorClicked() {
+        bookPresenter.onAvatorClicked();
     }
 
 
@@ -86,9 +103,13 @@ public class BookFragment extends Fragment implements BookView {
 
     private BookAdapter bookAdapter;
 
+    @Inject
+    ItemDecoration itemDecoration;
+
     private void initRvBookList() {
         rvBookList.setLayoutManager(new LinearLayoutManager(getActivity()));
         rvBookList.setAdapter(bookAdapter = new BookAdapter());
+        rvBookList.addItemDecoration(itemDecoration);
         addScrollWatcher();
     }
 
@@ -113,8 +134,8 @@ public class BookFragment extends Fragment implements BookView {
 
     @Override
     public void renderBooks(List<Book> books) {
-        bookAdapter.setHeader(new Object());
-        bookAdapter.setItems(books);
+        bookAdapter.setHeader(books.get(0));
+        bookAdapter.setItems(books.subList(1, books.size()));
         bookAdapter.notifyDataSetChanged();
     }
 

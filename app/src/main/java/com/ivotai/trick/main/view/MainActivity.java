@@ -79,8 +79,6 @@ public class MainActivity extends BaseActivity implements MainView {
     }
 
 
-
-
     @BindView(R.id.drawerLayout)
     DrawerLayout drawerLayout;
 
@@ -95,7 +93,9 @@ public class MainActivity extends BaseActivity implements MainView {
     }
 
     @Override
-    public boolean isSideBarOpen() { return drawerLayout.isDrawerOpen(Gravity.LEFT);}
+    public boolean isSideBarOpen() {
+        return drawerLayout.isDrawerOpen(Gravity.LEFT);
+    }
 
     @BindView(R.id.tvBottomTab1)
     TextView tvBottomTab1;
