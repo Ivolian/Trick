@@ -2,15 +2,14 @@
 
 package com.ivotai.trick.book.view.viewholder;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.ivotai.trick.R;
-import com.ivotai.trick.app.AppComponentProvider;
+import com.ivotai.trick.app.helper.GlideHelper;
+import com.ivotai.trick.app.provider.AppComponentProvider;
 import com.ivotai.trick.book.helper.BookCoverHelper;
 import com.ivotai.trick.model.Book;
 
@@ -23,7 +22,7 @@ import butterknife.ButterKnife;
 public class ItemBookViewHolder extends RecyclerView.ViewHolder {
 
     @Inject
-    Context mContext;
+    GlideHelper glideHelper;
 
     @BindView(R.id.ivCover)
     ImageView ivCover;
@@ -58,9 +57,8 @@ public class ItemBookViewHolder extends RecyclerView.ViewHolder {
     private void renderCover(Book book) {
         int bid = book.getBid();
         String coverUrl = BookCoverHelper.coverUrl(bid);
-        Glide.with(mContext).load(coverUrl).into(ivCover);
+        glideHelper.loadImg(coverUrl, ivCover);
     }
-
 
 
 }

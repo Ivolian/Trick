@@ -1,6 +1,6 @@
 package com.ivotai.trick.book.dagger;
 
-import com.ivotai.trick.app.AppComponent;
+import com.ivotai.trick.app.daggar.AppComponent;
 import com.ivotai.trick.book.view.BookFragment;
 
 import dagger.Component;

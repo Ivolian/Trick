@@ -5,10 +5,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.widget.LinearLayout;
 
 import com.ivotai.trick.R;
-import com.ivotai.trick.app.AppComponentProvider;
 import com.ivotai.trick.app.helper.ToastHelper;
+import com.ivotai.trick.app.provider.AppComponentProvider;
 import com.ivotai.trick.base.BaseActivity;
 import com.ivotai.trick.book.view.BookFragment;
+import com.ivotai.trick.main.sidebar.view.SideBarFragment;
 import com.ivotai.trick.util.DensityUtil;
 
 import javax.inject.Inject;
@@ -59,5 +60,12 @@ public class MainActivity extends BaseActivity {
         FragmentTransaction transition = getSupportFragmentManager().beginTransaction();
         transition.replace(R.id.contentFrame, fragment);
         transition.commit();
+
+        fragment = new SideBarFragment();
+        transition = getSupportFragmentManager().beginTransaction();
+        transition.add(R.id.flSideBar, fragment);
+        transition.commit();
+
+
     }
 }

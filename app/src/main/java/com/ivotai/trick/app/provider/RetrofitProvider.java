@@ -1,4 +1,6 @@
-package com.ivotai.trick.app;
+package com.ivotai.trick.app.provider;
+
+import com.ivotai.trick.app.config.AppConfig;
 
 import javax.inject.Inject;
 
@@ -9,10 +11,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * The type Retrofit provider.
- * 完成 Retrofit 的初始化工作
  */
-
-class RetrofitProvider {
+public class RetrofitProvider {
 
     /**
      * Instantiates a new Retrofit provider.
@@ -26,13 +26,13 @@ class RetrofitProvider {
      *
      * @return the retrofit
      */
-    final Retrofit provide() {
+    public final Retrofit provide() {
         OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder();
 //            okHttpClientBuilder.addNetworkInterceptor(new StethoInterceptor());
         OkHttpClient okHttpClient = okHttpClientBuilder.build();
         return new Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl(AppConfig.baseRequestUrl())
+                .baseUrl(AppConfig.BASE_REQUEST_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();

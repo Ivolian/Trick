@@ -3,16 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <include layout="@layout/act_main_content" />
 
-    <include
-        layout="@layout/act_main_sidebar"
+    <FrameLayout
+        android:id="@+id/flSideBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start" />
-
-
 
 </android.support.v4.widget.DrawerLayout>
 

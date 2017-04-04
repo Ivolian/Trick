@@ -1,7 +1,9 @@
-package com.ivotai.trick.app;
+package com.ivotai.trick.app.daggar;
 
 import android.app.Application;
 import android.content.Context;
+
+import com.ivotai.trick.app.provider.RetrofitProvider;
 
 import javax.inject.Singleton;
 
@@ -10,12 +12,11 @@ import dagger.Provides;
 import retrofit2.Retrofit;
 
 /**
- * The type App module.
- * 顶级依赖提供者
+ * APP层依赖提供者
  * 提供: Context，Retrofit
  */
 @Module
-class AppModule {
+public class AppModule {
 
     private final Context context;
 
@@ -24,7 +25,7 @@ class AppModule {
      *
      * @param application the application
      */
-    AppModule(Application application) {
+    public AppModule(Application application) {
         context = application.getApplicationContext();
     }
 

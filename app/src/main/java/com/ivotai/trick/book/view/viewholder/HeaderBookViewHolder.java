@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.gelitenight.waveview.library.WaveView;
 import com.ivotai.trick.R;
-import com.ivotai.trick.app.AppComponentProvider;
+import com.ivotai.trick.app.provider.AppComponentProvider;
 
 import butterknife.BindColor;
 import butterknife.BindView;

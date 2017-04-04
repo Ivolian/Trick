@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.LinearLayout;
 
 import com.ivotai.trick.R;
-import com.ivotai.trick.app.AppComponentProvider;
+import com.ivotai.trick.app.provider.AppComponentProvider;
 import com.ivotai.trick.util.DensityUtil;
 
 import javax.inject.Inject;

@@ -1,12 +1,11 @@
 package com.ivotai.trick.book.dagger;
 
-import com.ivotai.trick.app.AppComponent;
-import com.ivotai.trick.app.AppComponentProvider;
+import com.ivotai.trick.app.daggar.AppComponent;
+import com.ivotai.trick.app.provider.AppComponentProvider;
 import com.ivotai.trick.book.view.BookView;
 
 import dagger.internal.Preconditions;
 
-import static com.ivotai.trick.book.dagger.DaggerBookComponent.builder;
 
 
 /**
@@ -27,7 +26,7 @@ public final class BookComponentProvider {
     public static void init(BookView bookView) {
         AppComponent appComponent = AppComponentProvider.provide();
         BookModule bookModule = new BookModule(bookView);
-        bookComponent = builder()
+        bookComponent = DaggerBookComponent.builder()
                 .appComponent(appComponent)
                 .bookModule(bookModule)
                 .build();

@@ -1,6 +1,7 @@
 package com.ivotai.trick.book.helper;
 
-import com.ivotai.trick.app.AppConfig;
+
+import com.ivotai.trick.app.config.AppConfig;
 
 /**
  * The type Book cover helper.
@@ -25,7 +26,7 @@ public class BookCoverHelper {
             latter = latter.substring(1, 3);
         }
         // http://wfqqreader.3g.qq.com/cover/254/239254/t5_239254.jpg
-        return AppConfig.baseCoverUrl() + latter + "/" + bid + "/t5_" + bid + ".jpg";
+        return AppConfig.BASE_COVER_URL + latter + "/" + bid + "/t5_" + bid + ".jpg";
     }
 
 }

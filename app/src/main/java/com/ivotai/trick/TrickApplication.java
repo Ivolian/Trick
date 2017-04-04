@@ -2,7 +2,8 @@ package com.ivotai.trick;
 
 import android.app.Application;
 
-import com.ivotai.trick.app.AppComponentProvider;
+import com.ivotai.trick.app.provider.AppComponentProvider;
+
 
 /**
  * The type Trick application.

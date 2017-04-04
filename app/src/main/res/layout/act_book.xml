@@ -6,7 +6,7 @@
     <include layout="@layout/act_book_content" />
 
     <include
-        layout="@layout/act_main_sidebar"
+        layout="@layout/fra_side_bar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start" />

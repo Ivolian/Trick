@@ -6,7 +6,7 @@ import android.widget.LinearLayout;
 import com.hitomi.cslibrary.CrazyShadow;
 import com.hitomi.cslibrary.base.CrazyShadowDirection;
 import com.ivotai.trick.R;
-import com.ivotai.trick.app.AppComponentProvider;
+import com.ivotai.trick.app.provider.AppComponentProvider;
 import com.ivotai.trick.base.ToolbarActivity;
 import com.ivotai.trick.util.DensityUtil;
 

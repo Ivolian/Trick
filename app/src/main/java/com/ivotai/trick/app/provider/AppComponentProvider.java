@@ -1,9 +1,12 @@
-package com.ivotai.trick.app;
+package com.ivotai.trick.app.provider;
 
 import android.app.Application;
 
-import dagger.internal.Preconditions;
+import com.ivotai.trick.app.daggar.AppComponent;
+import com.ivotai.trick.app.daggar.AppModule;
+import com.ivotai.trick.app.daggar.DaggerAppComponent;
 
+import dagger.internal.Preconditions;
 
 /**
  * The type App component provider.
