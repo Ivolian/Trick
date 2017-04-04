@@ -1,9 +1,10 @@
 package com.ivotai.trick.app.daggar;
 
+import android.content.Context;
+
 import com.ivotai.trick.book.view.BookListScrollWatcher;
 import com.ivotai.trick.book.view.viewholder.HeaderBookViewHolder;
 import com.ivotai.trick.book.view.viewholder.ItemBookViewHolder;
-import com.ivotai.trick.main.MainActivity;
 import com.ivotai.trick.ui.NovelActivity;
 
 import javax.inject.Singleton;
@@ -22,9 +23,14 @@ public interface AppComponent {
     /**
      * Provide retrofit retrofit.
      * 将依赖暴露给下级 Component
+     *
      * @return the retrofit
      */
+
+    Context provideContext();
+
     Retrofit provideRetrofit();
+
 
     void inject(ItemBookViewHolder o);
 
@@ -34,6 +40,6 @@ public interface AppComponent {
 
     void inject(NovelActivity o);
 
-    void inject(MainActivity o);
+//    void inject(MainActivity o);
 
 }

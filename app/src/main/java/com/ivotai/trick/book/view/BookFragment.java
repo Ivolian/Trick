@@ -39,7 +39,7 @@ public class BookFragment extends Fragment implements BookView {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.act_book, container, false);
+        View root = inflater.inflate(R.layout.fra_book, container, false);
         ButterKnife.bind(this, root);
         initViews();
         initWorks();

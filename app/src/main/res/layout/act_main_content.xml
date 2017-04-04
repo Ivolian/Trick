@@ -22,6 +22,6 @@
 
     </FrameLayout>
 
-    <include layout="@layout/act_main_bottombar" />
+    <include layout="@layout/act_main_bottom_tabs" />
 
 </LinearLayout>

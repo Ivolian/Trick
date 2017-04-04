@@ -1,29 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/llBottomBar"
+    android:id="@+id/llBottomTabs"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-    <LinearLayout style="@style/LlBottomBarItem">
+    <LinearLayout
+        android:id="@+id/llBottomTab1"
+        style="@style/LlBottomBarItem">
 
         <ImageView
+            android:id="@+id/ivBottomTab1"
             style="@style/IvBottomBarItem"
             android:src="@drawable/maintab_bookstand_icon_hover" />
 
         <TextView
+            android:id="@+id/tvBottomTab1"
             style="@style/TvBottomBarItem"
             android:text="书架" />
 
     </LinearLayout>
 
-    <LinearLayout style="@style/LlBottomBarItem">
+    <LinearLayout
+        android:id="@+id/llBottomTab2"
+        style="@style/LlBottomBarItem">
 
         <ImageView
+            android:id="@+id/ivBottomTab2"
             style="@style/IvBottomBarItem"
             android:src="@drawable/maintab_city_icon" />
 
         <TextView
+            android:id="@+id/tvBottomTab2"
             style="@style/TvBottomBarItem"
             android:text="精选" />
 
@@ -37,7 +45,8 @@
 
         <TextView
             style="@style/TvBottomBarItem"
-            android:text="书库" />
+            android:text="书库"
+            android:textColor="@color/md_grey_500" />
 
     </LinearLayout>
 
@@ -49,7 +58,8 @@
 
         <TextView
             style="@style/TvBottomBarItem"
-            android:text="发现" />
+            android:text="发现"
+            android:textColor="@color/md_grey_500" />
 
     </LinearLayout>
 

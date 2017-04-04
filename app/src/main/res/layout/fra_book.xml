@@ -16,7 +16,7 @@
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
-    <include layout="@layout/act_book_content_titlebar" />
+    <include layout="@layout/frg_book_title_bar" />
 
     <com.wang.avi.AVLoadingIndicatorView
         android:id="@+id/avi"

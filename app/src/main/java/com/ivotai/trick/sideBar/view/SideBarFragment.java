@@ -1,4 +1,4 @@
-package com.ivotai.trick.main.sidebar.view;
+package com.ivotai.trick.sideBar.view;
 
 import com.ivotai.trick.R;
 import com.ivotai.trick.base.BaseFragment;
